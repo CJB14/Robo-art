@@ -1,8 +1,9 @@
-//ROUTES FOR PRINT API ORDERS 
+//ROUTES FOR PRINT API ROUTES
 
 //user selects print size, stripe processes payment
 //the same user selection of print sizes and clicking purchase or buy button, or 
 //maybe the completion of stripe api payment triggers a call to peecho print api
+
 //live sandbox https://www.peecho.com
 
 //peecho print api keys:
@@ -12,24 +13,7 @@
 //documentation link: https://www.peecho.com/print-api-documentation
 
 // send post request to https://test.www.peecho.com/rest/v2/order/
-// parameters:
-// number - number of copies to be printed (lets say no more than 15)- required
-// merchant_api_key - required -  string
-// offering_id - required - number -- will be artwork ID of the order
-// order_reference - order id string - reference identify the order in system if we want
-// purchase_order - string - maybe provided by Stripe API or Peecho API ? gotta check
-// content_url - required - (/artwork/:id ?)
-// required
-// number
-// content_width -required -- part of user input when selecting size of print from drop down
-// content_height - required - number
-// customer/buyer_details: {
-// user_id,
-// username,
-// email address,
-// shipping_address,
-// billing_address,
-//}
+// see documentation for required parameters
 
 //EXAMPLE PRINT API POST CALL FROM DOCUMENTATION for reference
 // var printAPIRequest = require('request');
@@ -47,11 +31,10 @@
 //     console.log('Response:', body);
 // });
 
-//errors for peecho print api 
-//link: 
+//errors for peecho print api (link: )
 
-// CODE STARTS HERE FOR POST REQUEST TO PRINT API HERE
 // TO DO : MODULARIZE SOME OF THIS TO stripeControllers.js
+// CODE STARTS HERE FOR TEST POST REQUEST TO PRINT API
 
 const router = require('express').Router();
 const Order = require('../models/order');
@@ -68,6 +51,7 @@ router.post('/order', async (req, res) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+              // TO DO : 
                 quantity: 1,
                 merchant_api_key: merchantAPIKey,
                 offering_id: 'should be a variable with artwork id',
