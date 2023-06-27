@@ -2,24 +2,24 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     type User {
-        _id: ID
-        username: String
-        email: String
+        _id: ID!
+        username: String!
+        email: String!
         orders: [Order]
     }
 
     type Order {
-        _id: ID
-        purchaseDate: String
+        _id: ID!
+        purchaseDate: String!
         products: [Product]
     }
 
     type Product {
-        _id: ID
-        name: String
+        _id: ID!
+        name: String!
         description: String
-        price: Float
-        quantity: Int
+        price: Float!
+        quantity: Int!
     }
 
     type Auth {
@@ -46,9 +46,9 @@ const typeDefs = gql`
         deleteProduct(_id: ID!): Product
     }
 
-    type Checkout {
-        session: ID
-    }
+    # type Checkout {
+    #     session: ID
+    # }
 `;
 
 module.exports = typeDefs;
