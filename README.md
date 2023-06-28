@@ -1,70 +1,45 @@
-# Getting Started with Create React App
+# Robo-Art
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## License
 
-## Available Scripts
+undefined
+## Description
 
-In the project directory, you can run:
+Robo-Art is a groundbreaking app that leverages the power of artificial intelligence (AI) to generate mesmerizing artwork, fostering creativity and artistic exploration. With Robo-Art, users can tap into their artistic potential by experimenting with different parameters and styles to generate unique and captivating pieces. The app offers an intuitive interface, making it accessible to both beginners and experienced artists. Users can immerse themselves in a diverse gallery of AI-generated artwork contributed by a vibrant community of artists, inspiring them to discover new artistic directions and engage in meaningful artistic discussions. Additionally, Robo-Art provides the opportunity to transform virtual art into tangible expressions of creativity by offering high-quality print purchasing options, enabling users to adorn their spaces with captivating AI-generated art.
 
-### `npm start`
+Robo-Art revolutionizes the art world by combining the limitless possibilities of AI with human creativity. It empowers users to explore the intersection of technology and art, pushing the boundaries of traditional artistic processes. Whether you are an artist seeking fresh inspiration or an art enthusiast looking for captivating artwork, Robo-Art provides a platform for artistic expression and discovery. Unleash your creativity, browse awe-inspiring artwork, and bring the beauty of AI-generated art into your physical spaces with Robo-Art.
+   
+## Table of Contents
+    
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#test)
+- [Credits](#credits)
+    
+## Installation
+To install the required dependencies, run the following command:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+``` npm install ```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Usage
+Use through the web terminal. It will also be available through your mobile device's appstore eventually. 
 
-### `npm test`
+app can be found at 
+    
+## Testing
+![home page](public/img/home.png)
+![login page](public/img/login.png)
+![dashboard](public/img/user-dashboard.png)
+![pin page](public/img/pin.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Credits
+- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- auth.js file from 22-State lesson 24 Stu_Stripe
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Questions
+If you have any questions you can contact us at:
+- Github https://github.com/PhilRug
+- Github https://github.com/gabrielaortiz6
+- Github https://github.com/CJB14
+- Github https://github.com/JasonLewis007

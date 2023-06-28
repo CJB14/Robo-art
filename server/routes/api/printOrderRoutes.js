@@ -1,61 +1,22 @@
-//ROUTES FOR PRINT API ORDERS 
+//ROUTES FOR PRINT API ROUTES
 
 //user selects print size, stripe processes payment
-//the same user selection of print sizes and clicking purchase or buy button, or completion of stripe api payment triggers a call to peecho print api
+//the same user selection of print sizes and clicking purchase or buy button, or 
+//maybe the completion of stripe api payment triggers a call to peecho print api
+
 //live sandbox https://www.peecho.com
 
-//api keys:
+//peecho print api keys:
 //Button key: 16877206283831117
 //Merchant API Key: 8c08b64f40ea148f01898d38d6343cbede41e15e
 //Secret key: a10bfd751378a0aeddb252dcf47788c21003c069
 //documentation link: https://www.peecho.com/print-api-documentation
 
-
-//send post request to https://test.www.peecho.com/rest/v2/order/
-// parameters: required - number
-//number of copies to be printed, no more than 15
-
-// merchant_api_key - required -  string
-
-// offering_id - required - number -- will be artwork ID (identifier for the order that is to be printed)
-
-//order_reference
-// string - a reference chosen by you to identify the order in your system
-// purchase_order - string - maybe provided by Stripe API gotta check
-//content_url
-//required
-//string
-// Source file to be printed.
-
-// content_width
-// required
-// number
-// width of the content file -- part of user input when selecting size of print from drop down
-
-// content_height
-// required
-// number
-// height of the content file -- part of user input when selecting size of print from drop down
-
-// see if these can be saved through stripe
-// address_details
-// object
-// details about shipment and billing
-
-// email_address
-// required
-// string
-// email of the customer. They will receive order confirmation and shipping details on this address
-
-// shipping_address
-// required
-// object
-// billing_address
-// object
+// send post request to https://test.www.peecho.com/rest/v2/order/
+// see documentation for required parameters
 
 //EXAMPLE PRINT API POST CALL FROM DOCUMENTATION for reference
 // var printAPIRequest = require('request');
-
 // printAPIRequest({
 //     method: 'POST',
 //     url: 'https://test.www.peecho.com/rest/v2/order/',
@@ -70,68 +31,16 @@
 //     console.log('Response:', body);
 // });
 
+//errors for peecho print api (link: )
 
+// TO DO : MODULARIZE SOME OF THIS TO stripeControllers.js
+// CODE STARTS HERE FOR TEST POST REQUEST TO PRINT API
 
-//errors for peecho print api 
-
-// Response 201
-// `HEADERS
-// Content-Type:application/json
-// BODY
-// {
-//   "order_id": 1234
-// }`
-
-// Response 401
-// HEADERS
-// Content-Type:application/json
-// BODY
-// {
-//   "url": "https://www.peecho.com/rest/v2/order/",
-//   "details": "Incorrect merchantApiKey!",
-//   "custom_code": "APP_FORBIDDEN",
-//   "timestamp": "2020-10-15T16:54:06.276"
-// }
-// Response
-// 400
-// HEADERS
-// Content-Type:application/json
-// BODY
-// {..."details": "Required quantity: 1 is lower than the minimum quantity of: 5!"...}
-// {..."details":" Custom reference: ABC is already assigned to another order: 777"...}
-// Response
-// 404
-// HEADERS
-// Content-Type:application/json
-// BODY
-// {..."details": ""This currency: EUT is not available!"...}
-
-//more peecho error codes: 
- //OFF_NOT_FOUND	Check the available offerings using /list endpoint
-// OFF_MIN	There is a minimum quantity to be ordered for this offering. Check details of an offering using /list endpoint
-// APP_FORBIDDEN	Incorrect API Key provided. Check your API key in the "API" page of any Application in your account
-// MERCH_INSUFFICIENT_BALANCE	There is not enough balance on your account. You either need to add credit or contact support@peecho.com to switch to a monthly invoiced account. Check Payment methods
-// ORD_SECRET	The secret provided is incorrect. It should be the hex SHA-256 encoded value of your account secret key(found in the API page of any Application in your account) joined by the order id. Example: If secret key is "ABC1234SECRET" and order id is "12345" then secret = SHA256(ABC1234SECRET12345) = "d2ba59a316912c3acbc33d7ada3197a0ea7ff4ac8befdb3bc39690f4e478a06a"
-// SPINE_ORDER_NOT_FOUND	There is no order placed with the mentioned id. If you wanted to check a spine for an offering (in order to place a future order) use this endpoint
-// ORD_NO_PRINTER	The order is not assigned to a production facility yet. This means that the address still needs to be set. Check if there was an error when setting the address, it might be the case that there is no production facility available for the product in the specified country. The Offerings endpoints can show you available products and which countries can they be printed in.
-// ORD_DUPLICATE	The order reference must be unique at a Merchant level (even if you have multiple Applications).
-// ORD_PAID_STATE	Order can only be set to PAID if it is in either OPEN or PAYMENT_ERROR statuses. Check the status in the Dashboard or using the status endpoint
-// ORD_CANCEL_STATE	Order cannot be cancelled if it has already been sent to the printer (status IN_PRINT_QUEUE or IN_PRODUCTION or SHIPPED) or if it was already cancelled/refunded before. Check the status in the Dashboard or using the status endpoint
-// ORD_FILES_STATE	Files for an order can only be updated if the order is still OPEN or it is PENDING_COMPLETION. Check the status in the Dashboard or using the status endpoint
-// ORD_MISS_ADDR	Address needs to be first set before an order can be paid (submitted). Use the update address endpoint to set the address.
-// NO_PF	There is no production facility that can ship the selected product in the selected country. The Offerings endpoints can show you available products and which countries can they be printed in.
-// CURR_INVALID	Invalid currency. This is the list of available currencies in our system: USD,JPY,BGN,CZK,DKK,ILS,GBP,HUF,LTL,LVL,PLN,RON,SEK,CHF,NOK,HRK,RUB,TRY,AUD,BRL,CAD,CNY,HKD,IDR,INR,KRW,MXN,MYR,NZD,PHP,SGD,THB,ZAR,ISK
-// COLOR_INVALID	The specified color is invalid. The color must be specified in of the hex format: #RRGGBB
-// FONT_INVALID
-
-//ACTUAL CODE STARTS HERE FOR POST REQUEST TO PRINT API HERE
-
-const express = require('express');
-const router = express.Router();
+const router = require('express').Router();
 const Order = require('../models/order');
 
 const merchantAPIKey = '8c08b64f40ea148f01898d38d6343cbede41e15e';
-let orderID;
+let orderId;
 
 //POST REQUEST FOR PEECHO PRINT API - CREATES PRINT ORDER
 router.post('/order', async (req, res) => {
@@ -142,6 +51,7 @@ router.post('/order', async (req, res) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+              // TO DO : 
                 quantity: 1,
                 merchant_api_key: merchantAPIKey,
                 offering_id: 'should be a variable with artwork id',
@@ -163,7 +73,7 @@ router.post('/order', async (req, res) => {
 const printData = await printAPIResponse.json();
 
 //save to variable
-orderID = printData.order_id;
+orderId = printData.order_id;
 
 //save order_id to database
  const order = new Order({
@@ -216,7 +126,7 @@ router.get('/order/status/:orderId', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-// THEN DISPLAY ORDER STATUS TO FRONT END
+// DISPLAY ORDER STATUS TO FRONT END
 
 //CANCEL ORDER - POST REQUEST ROUTE
 //if status of the order is IN_PRINT_QUEUE, you cannot cancel the order. it should show up in "details" - CREATE FRONT END MESSAGE TO THIS

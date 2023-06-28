@@ -21,5 +21,4 @@ const {
     paymentWebhook
 } = require('../../controllers/stripeControllers');
 
-// other stripe routes
 router.post('/webhook', paymentWebhook);
