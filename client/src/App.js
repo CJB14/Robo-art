@@ -1,9 +1,9 @@
-import download from './download.png';
-import logo from './logo.svg';
-import preview from './preview.png';
+const download = require('./download.png');
+const logo = require('./logo.svg');
+const preview = require('./preview.png');
 
-export {
+module.exports = {
   download,
   logo,
-  preview,
+  preview
 };
