@@ -1,0 +1,32 @@
+[
+{
+"name": "John Wick",
+"email": "Wick@gmail.com",
+"password": "password123",
+"artworks": 
+},
+{
+"name": "Han Solo",
+"email": "Solo@gmail.com",
+"password": "password456",
+"artworks": 
+},
+{
+"name": "Ray Fields",
+"email": "Ray@gmail.com",
+"password": "password789",
+"artworks": 
+},
+{
+"name": "Homer Simpson",
+"email": "Homer@gmail.com",
+"password": "passwordduh",
+"artworks": 
+},
+{
+"name": "Eric Cartman",
+"email": "Cartman@gmail.com",
+"password": "password321",
+"artworks": 
+},
+]
