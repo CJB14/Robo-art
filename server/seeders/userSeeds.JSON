@@ -3,30 +3,30 @@
 "name": "John Wick",
 "email": "Wick@gmail.com",
 "password": "password123",
-"artworks": 
+"artworks": ""
 },
 {
 "name": "Han Solo",
 "email": "Solo@gmail.com",
 "password": "password456",
-"artworks": 
+"artworks": ""
 },
 {
 "name": "Ray Fields",
 "email": "Ray@gmail.com",
 "password": "password789",
-"artworks": 
+"artworks": ""
 },
 {
 "name": "Homer Simpson",
 "email": "Homer@gmail.com",
 "password": "passwordduh",
-"artworks": 
+"artworks": ""
 },
 {
 "name": "Eric Cartman",
 "email": "Cartman@gmail.com",
 "password": "password321",
-"artworks": 
-},
+"artworks": ""
+}
 ]
