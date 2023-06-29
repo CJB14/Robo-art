@@ -46,9 +46,9 @@ const typeDefs = gql`
         deleteProduct(_id: ID!): Product
     }
 
-    # type Checkout {
-    #     session: ID
-    # }
+    type Checkout {
+        session: ID
+    }
 `;
 
 module.exports = typeDefs;
