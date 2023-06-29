@@ -20,14 +20,14 @@ const userSchema = new Schema({
     minlength: 5,
   },
 // creates one to many relationship
-// should it also be referencing user ?
-// does it need to be linked to order model as well? 
+// should it be referencing user ?
   artworks: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Artwork',
     },
   ],
+  
 // TO DO: ADD MORE
 });
 

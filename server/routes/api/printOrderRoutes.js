@@ -35,7 +35,6 @@
 
 // TO DO : MODULARIZE SOME OF THIS TO stripeControllers.js
 // CODE STARTS HERE FOR TEST POST REQUEST TO PRINT API
-
 const router = require('express').Router();
 const Order = require('../models/order');
 
