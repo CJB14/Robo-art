@@ -12,7 +12,6 @@
 //SECRET KEY: sk_test_51NN0DcH6zZZeR5PgprMBqqJ28DeK6DemJnrHfnkIgIApF0T7X6dQIsVTGT2FAE6hRVfteCtlxIEAVoOMLlieUFR300JS6YEBK2
 //account id acct_1NN0DcH6zZZeR5Pg
 
-// secret key is second param for requiring stripe
 // const stripe = require('stripe')('sk_test_51NN0DcH6zZZeR5PgprMBqqJ28DeK6DemJnrHfnkIgIApF0T7X6dQIsVTGT2FAE6hRVfteCtlxIEAVoOMLlieUFR300JS6YEBK2');
 
 const router = require('express').Router();
@@ -22,3 +21,5 @@ const {
 } = require('../../controllers/stripeControllers');
 
 router.post('/webhook', paymentWebhook);
+
+module.exports = router;

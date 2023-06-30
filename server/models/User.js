@@ -20,19 +20,20 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-// creates one to many relationship
-// should it also be referencing user ?
-// does it need to be linked to order model as well? 
   artworks: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Artwork',
     },
   ],
-// TO DO: ADD MORE
-  orders: [Order.schema]
+  favoriteArtworks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Artwork',
+    },
+  ],
+orders: [Order.schema]
 });
-
 
 // pre save hook that hashes password before saving to db
 userSchema.pre('save', async function (next) {

@@ -12,7 +12,7 @@ const ProfilePage = ({ user }) => {
         <div>
           <strong>Username:</strong> {user.username}
         </div>
-        {/* Add more user details as needed */
+        /* Add more user details as needed */
 //       </div>
 //       <div className="profile-actions">
 //         <button>Logout</button>
@@ -21,6 +21,7 @@ const ProfilePage = ({ user }) => {
 //   );
 // };
 
+// export default ProfilePage;*/
 // export default ProfilePage;*/
 
 class Profile extends React.Component {
