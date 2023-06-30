@@ -12,6 +12,11 @@ const orderSchema = new Schema({
       required: true,
     },
     // TO DO: ADD MORE
+    purchaseDate: {
+      type: Date,
+      default: Date.now
+    },
+    
   });
   
 const Order = model('Order', orderSchema);
