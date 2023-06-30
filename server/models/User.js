@@ -19,18 +19,25 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-// creates one to many relationship
-// should it be referencing user ?
   artworks: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Artwork',
     },
   ],
-  
-// TO DO: ADD MORE
+  orders: [
+    {
+        type: Schema.Types.ObjectId,
+        ref: 'Order',
+    },
+],
+favoriteArtworks: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Artwork',
+    },
+  ],
 });
-
 
 // pre save hook that hashes password before saving to db
 userSchema.pre('save', async function (next) {

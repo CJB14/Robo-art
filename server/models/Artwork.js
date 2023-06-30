@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const dayjs = require('dayjs');
 
 const artworkSchema = new Schema({
     title: {
@@ -6,48 +7,36 @@ const artworkSchema = new Schema({
         required: true,
         trim: true,
     },
+    imageURL: {
+        //could be changed if need be
+        type: String,
+        required: true,
+    },
     description: {
         type: String,
         required: true,
         unique: true,
         trim: true,
     },
-    //for browsing
-    // category: {
-    //     type: String,
-    //     required: true,
-    // },
-    user: {
+    artist: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
-    // relationship
-    // should it be referencing user purchasing it/buyer_id ?
-    orders: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Order',
-        },
-    ],
-    // TO DO: ADD MORE
 });
 
-
-//pre save hook that hashes password before saving to db
-userSchema.pre('save', async function (next) {
-    if (this.isNew || this.isModified('password')) {
-        const saltRounds = 10;
-        this.password = await bcrypt.hash(this.password, saltRounds);
-    }
-
-    next();
+// virtual that defines relationship between user and artwork
+artworkSchema.virtual('artist', {
+    ref: 'User',
+    localField: 'user',
+    foreignField: '_id',
+    justOne: true,
 });
 
-// instance method that compares password that was input with the hashed password stored in the user db
-userSchema.methods.isCorrectPassword = async function (password) {
-    return bcrypt.compare(password, this.password);
-};
+//day js virtual
+artworkSchema.virtual('formattedArtworkDate').get(function () {
+    return dayjs(this.date_created).format('YYYY-MM-DD');
+  });
 
 const Artwork = model('Artwork', artworkSchema);
 
