@@ -8,6 +8,7 @@
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
         "bootstrap": "^5.2.3",
+        "dayjs": "^1.11.8",
         "deepai": "^1.0.21",
         "jwt-decode": "^2.2.0",
         "react": "^16.13.1",
