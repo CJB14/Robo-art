@@ -1,20 +1,3 @@
-// const download = require('./download.png');
-// const logo = require('./logo.svg');
-// const preview = require('./preview.png');
-
-// module.exports = {
-//   download,
-//   logo,
-//   preview
-// };
-// const express = require('express');
-// const userController = require('./controllers/userControllers');
-
-// const app = express();
-
-// app.use('/users', userController);
-
-// app.listen(3000);
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
@@ -29,6 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Profile from './pages/Profile';
+import NoMatch from './pages/NoMatch';
 import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
 
