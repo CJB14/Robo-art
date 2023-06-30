@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+const Order = require('./Order');
 
 const userSchema = new Schema({
   username: {
@@ -25,18 +26,13 @@ const userSchema = new Schema({
       ref: 'Artwork',
     },
   ],
-  orders: [
-    {
-        type: Schema.Types.ObjectId,
-        ref: 'Order',
-    },
-],
-favoriteArtworks: [
+  favoriteArtworks: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Artwork',
     },
   ],
+orders: [Order.schema]
 });
 
 // pre save hook that hashes password before saving to db

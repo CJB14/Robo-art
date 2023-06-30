@@ -22,6 +22,7 @@ const ProfilePage = ({ user }) => {
 // };
 
 // export default ProfilePage;*/
+// export default ProfilePage;*/
 
 class Profile extends React.Component {
   constructor(props) {
