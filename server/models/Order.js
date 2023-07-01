@@ -56,7 +56,14 @@ const orderSchema = new Schema({
     type: String,
     required: true,
   },
-});
+},
+{
+  toJSON: {
+    getters: true,
+  },
+  id: false,
+}
+);
 
 orderSchema.virtual('formattedOrderDate').get(function () {
   return dayjs(this.date_created).format('YYYY-MM-DD HH:mm:ss');

@@ -23,15 +23,20 @@ const artworkSchema = new Schema({
         ref: 'User',
         required: true,
     },
-});
-
-// virtual that defines relationship between user and artwork
-artworkSchema.virtual('artist', {
-    ref: 'User',
-    localField: 'user',
-    foreignField: '_id',
-    justOne: true,
-});
+    // categories: [
+    //     {
+    //       type: Schema.Types.ObjectId,
+    //       ref: 'Category',
+    //     },
+    //   ],
+},
+{
+  toJSON: {
+    getters: true,
+  },
+  id: false,
+}
+);
 
 //day js virtual
 artworkSchema.virtual('formattedArtworkDate').get(function () {
