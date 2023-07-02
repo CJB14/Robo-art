@@ -33,7 +33,7 @@ app can be found at
 - auth.js, server.js file from 22-State lesson 24 Stu_Stripe
 - Peecho Print API: [Company Website](https://www.peecho.com/) & [API Documentation](https://www.peecho.com/print-api-documentation)
 - [Stripe API](https://stripe.com/docs/development/get-started)
-- AI Image Generator API by Deep AI (https://deepai.org/machine-learning-model/text2img)
+- [AI Image Generator API by Deep AI](https://deepai.org/machine-learning-model/text2img)
 
 
 ## Questions
