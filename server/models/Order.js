@@ -29,11 +29,11 @@ const orderSchema = new Schema({
     type: Number,
     required: true,
   },
-  contentWidth: {
+  width: {
     type: Number,
     required: true,
   },
-  contentHeight: {
+  height: {
     type: Number,
     required: true,
   },
@@ -42,6 +42,7 @@ const orderSchema = new Schema({
       type: String,
       enum: ['pending', 'paid', 'failed'],
       default: 'pending',
+      //required: true
     },
     paymentFailureReason: {
       type: String,
@@ -56,7 +57,19 @@ const orderSchema = new Schema({
     type: String,
     required: true,
   },
-});
+  orderStatus: {
+    type: String,
+      enum: ['n/a', 'iniated', 'pending', 'shipped'],
+      default: 'n/a',
+  }
+},
+{
+  toJSON: {
+    getters: true,
+  },
+  id: false,
+}
+);
 
 orderSchema.virtual('formattedOrderDate').get(function () {
   return dayjs(this.date_created).format('YYYY-MM-DD HH:mm:ss');
