@@ -23,6 +23,10 @@ const productSchema = new Schema({
         ref: 'User',
         required: true,
     },
+    // category: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Category',
+    // },
 });
 
 //day js virtual
