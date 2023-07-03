@@ -5,26 +5,39 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String!
-        orders: [Order]
+        orders: [Order] 
+        products: [Product]
+        # favorites: [Product]
     }
 
     type Order {
         _id: ID!
-        purchaseDate: String!
+        formattedOrderDate: String!
         products: [Product]
+        artist: User
+        buyer: User!
+        quantity: Int!
+        price: Float!
+        width: Float!
+        height: Float!
+        payment: PaymentInfo
+        shippingAddress: String
+        billingAddress: String!
+        orderStatus: OrderStatus
     }
 
     type Category {
         _id: ID!
         name: String!
+        products: [Product]
     }
 
     type Product {
         _id: ID!
-        name: String!
-        description: String
-        price: Float!
-        quantity: Int!
+       title: String
+       imageURL: String!
+       description: String
+       artist: User!
     }
 
     type Auth {
@@ -54,6 +67,24 @@ const typeDefs = gql`
     type Checkout {
         session: ID
     }
+
+    type PaymentInfo {
+  paymentStatus: PaymentStatus
+  paymentFailureReason: String
+}
+
+enum PaymentStatus {
+  pending
+  paid
+  failed
+}
+
+enum OrderStatus {
+  n/a
+  initiated
+  pending
+  shipped
+}
 `;
 
 module.exports = typeDefs;
