@@ -2,9 +2,9 @@ const { Schema, model } = require('mongoose');
 const dayjs = require('dayjs');
 
 const orderSchema = new Schema({
-  artwork: {
+  product: {
     type: Schema.Types.ObjectId,
-    ref: 'Artwork',
+    ref: 'Product',
     required: true,
   },
   artist: {
