@@ -10,6 +10,8 @@ const StoreProvider = ({ value = [], ...props }) => {
     products: [],
     cart: [],
     cartOpen: false,
+    //note: our user isn't shopping by category so idk if we need this
+    //maybe this should order instead?
     categories: [],
     currentCategory: '',
   });

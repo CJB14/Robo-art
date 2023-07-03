@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 const dayjs = require('dayjs');
 
-const artworkSchema = new Schema({
+const productSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -25,19 +25,11 @@ const artworkSchema = new Schema({
     },
 });
 
-// virtual that defines relationship between user and artwork
-artworkSchema.virtual('artist', {
-    ref: 'User',
-    localField: 'user',
-    foreignField: '_id',
-    justOne: true,
-});
-
 //day js virtual
-artworkSchema.virtual('formattedArtworkDate').get(function () {
+productSchema.virtual('formattedArtworkDate').get(function () {
     return dayjs(this.date_created).format('YYYY-MM-DD');
   });
 
-const Artwork = model('Artwork', artworkSchema);
+const Product = model('Product', productSchema);
 
-module.exports = Artwork;
+module.exports = Product;

@@ -1,12 +1,14 @@
-const fetch = require('node-fetch');
-
 //this is the actual endpoint
 // const liveEndpoint = 'https://api.peecho.com/api/printorder';
 
+const fetch = require('node-fetch');
+const { Order } = require('../models');
+
 //testing sandbox endpoint
 const testEndpoint = 'https://test.www.peecho.com/rest/v2/order/'
-const merchantAPIKey = '8c08b64f40ea148f01898d38d6343cbede41e15e'; //TO DO: ADD TO .ENV FILE
-const Order = require('../models/order');
+
+//TO DO: ADD TO .ENV FILE
+const merchantAPIKey = '8c08b64f40ea148f01898d38d6343cbede41e15e'; 
 
 //this call happens after user checks out with stripe and a new order is created
 const printOrder = async (req, res) => {
@@ -27,7 +29,7 @@ const printOrder = async (req, res) => {
      }
 
      // Access the artworkId from the order
-    const artworkId = order.artwork._id;
+    const artworkId = order.product._id;
 
      const headers = {
        'Content-Type': 'application/json',
