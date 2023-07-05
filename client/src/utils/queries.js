@@ -48,3 +48,7 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+export const QUERY_PRODUCTS = gql`
+  
+`;
