@@ -67,6 +67,8 @@ const LoginPage = () => {
 
 export default LoginPage;*/
 
+import React from 'react';
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
