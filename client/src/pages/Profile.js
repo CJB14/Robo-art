@@ -23,6 +23,7 @@ const ProfilePage = ({ user }) => {
 
 // export default ProfilePage;*/
 // export default ProfilePage;*/
+import React from 'react';
 
 class Profile extends React.Component {
   constructor(props) {
