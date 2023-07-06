@@ -59,8 +59,8 @@ const orderSchema = new Schema({
   },
   orderStatus: {
     type: String,
-      enum: ['n/a', 'iniated', 'pending', 'shipped'],
-      default: 'n/a',
+      enum: ['na', 'iniated', 'pending', 'shipped'],
+      default: 'na',
   }
 },
 {
