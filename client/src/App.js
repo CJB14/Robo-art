@@ -15,6 +15,7 @@ import Profile from './pages/Profile';
 import NoMatch from './pages/NoMatch';
 import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
+import Detail from './pages/Detail';
 
 const httpLink = createHttpLink({
   uri: '/graphql',

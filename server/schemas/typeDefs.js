@@ -52,6 +52,7 @@ const typeDefs = gql`
         products: [Product]
         product(_id: ID!): Product
         order(_id: ID!): Order
+        checkout(products: [ID]!): Checkout
     }
 
     type Mutation {
@@ -79,8 +80,8 @@ enum PaymentStatus {
   failed
 }
 
-enum OrderStatus {
-  n/a
+enum OrderStatus {  
+  na
   initiated
   pending
   shipped
