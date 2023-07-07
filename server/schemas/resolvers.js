@@ -4,6 +4,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
@@ -94,11 +95,17 @@ const resolvers = {
     },
     Mutation: {
       // Resolver functions for mutations
-      addUser: async (parent, args) => {
-        const user = await User.create(args);
-        const token = signToken(user);
+      // addUser: async (parent, {username, email, password}) => {
+      //   const user = await User.create({username, email, password});
+      //   const token = signToken(user);
   
-        return { token, user };
+      //   return { token, user };
+          // Resolver functions for mutations
+    addUser: async (parent, { username, email, password }) => {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await User.create({ username, email, password: hashedPassword });
+      const token = signToken(user);
+      return { token, user };
       },
       addOrder: async (parent, { products }, context) => {
         console.log(context);
@@ -140,3 +147,5 @@ const resolvers = {
   };
   
   module.exports = resolvers;
+
+  
