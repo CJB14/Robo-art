@@ -1,4 +1,24 @@
-// const { Schema, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
+
+const Category = {
+    id: {
+      type: Number,
+      primaryKey: true,
+    },
+    name: {
+      type: String,
+      required: true,
+    },
+    parentCategoryId: {
+      type: Number,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+  };
+  
+  module.exports = Category;
 
 // const categorySchema = new Schema({
 //     categoryName: {
