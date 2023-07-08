@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
 import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList } from 'react-icons/fa';
+import '../../App.css';
 
 const Footer = () => {
   const history = useHistory();
@@ -9,17 +10,13 @@ const Footer = () => {
   const isLoggedIn = true; // Replace with your authentication state
   const handleLogout = () => {
     // Implement your logout logic here
-  };
-
-  const goBack = () => {
-    history.goBack();
-  };
+  };  
 
   const ref = useRef();
 
   return (
     <footer className="footer">
-      <Container text textAlign="center">        
+      <Container text textAlign="center">
         <div className="footer-buttons" ref={ref}>
           <Button.Group widths="5" fluid>
             <Button as={Link} to="/" icon basic inverted>
@@ -45,7 +42,7 @@ const Footer = () => {
             )}
           </Button.Group>
         </div>
-        <h4>Created by the Robo-art team.</h4>
+        <h4 id="footnote">Created by the Robo-art team.</h4>
       </Container>
     </footer>
   );
