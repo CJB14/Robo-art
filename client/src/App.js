@@ -16,6 +16,7 @@ import NoMatch from './pages/NoMatch';
 import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
 import Detail from './pages/Detail';
+import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -50,6 +51,7 @@ function App() {
               <Route path="/products/:id" component={Detail} />
               <Route path="*" component={NoMatch} />
             </Switch>
+            <Footer />
           </StoreProvider>
         </div>
       </Router>

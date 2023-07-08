@@ -32,3 +32,27 @@ h1 {
   margin-left: 10px;
   align-items: center;
 }
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+}
+
+.footer-buttons {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.pages-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.footer {
+  margin-top: auto;
+}
