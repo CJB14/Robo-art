@@ -1,10 +1,9 @@
 import React, { useRef } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
-import { Icon, Button, Container, Grid } from 'semantic-ui-react';
-import { faHome, faUser, faShoppingCart, faHeart, faList } from 'react-icons/fa';
+import { useHistory, Link } from 'react-router-dom';
+import { Button, Container } from 'semantic-ui-react';
+import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList } from 'react-icons/fa';
 
 const Footer = () => {
-  const location = useLocation();
   const history = useHistory();
 
   const isLoggedIn = true; // Replace with your authentication state
@@ -19,34 +18,34 @@ const Footer = () => {
   const ref = useRef();
 
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4 fixed-bottom">
-      <Container text textAlign="center" className="mb-5">
-        {location.pathname !== '/' && (
+    <footer className="footer">
+      <Container text textAlign="center">
+        {history.location.pathname !== '/' && (
           <Button basic inverted color="black" onClick={goBack}>
             &larr; Go Back
           </Button>
         )}
         <div className="footer-buttons" ref={ref}>
           <Button.Group widths="5" fluid>
-            <Button icon basic inverted>
-              <Icon name="home" className="fa fa-home" />
+            <Button as={Link} to="/" icon basic inverted>
+              <FaHome />
             </Button>
-            <Button icon basic inverted>
-              <Icon name="user" className="fa fa-user" />
+            <Button as={Link} to="/profile" icon basic inverted>
+              <FaUser />
             </Button>
-            <Button icon basic inverted>
-              <Icon name="cart" className="fa fa-shopping-cart" />
+            <Button as={Link} to="/cart" icon basic inverted>
+              <FaShoppingCart />
             </Button>
-            <Button icon basic inverted>
-              <Icon name="heart" className="fa fa-heart" />
+            <Button as={Link} to="/favorites" icon basic inverted>
+              <FaHeart />
             </Button>
             {isLoggedIn ? (
               <Button basic inverted onClick={handleLogout}>
                 Logout
               </Button>
             ) : (
-              <Button icon basic inverted>
-                <Icon name="list" className="fa fa-list" />
+              <Button as={Link} to="/list" icon basic inverted>
+                <FaList />
               </Button>
             )}
           </Button.Group>
