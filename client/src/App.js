@@ -45,6 +45,7 @@ function App() {
           <StoreProvider>
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/profile" component={Profile} />
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
               <Route path="/orderHistory" component={OrderHistory} />

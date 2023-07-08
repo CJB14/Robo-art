@@ -1,29 +1,7 @@
-/*import React from 'react';
-
-
-const ProfilePage = ({ user }) => {
-  return (
-    <div className="profile-page">
-      <h2>Welcome, {user.name}!</h2>
-      <div className="user-details">
-        <div>
-          <strong>Email:</strong> {user.email}
-        </div>
-        <div>
-          <strong>Username:</strong> {user.username}
-        </div>
-        /* Add more user details as needed */
-//       </div>
-//       <div className="profile-actions">
-//         <button>Logout</button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfilePage;*/
-// export default ProfilePage;*/
 import React from 'react';
+import { Header, Input, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import '../App.css';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -48,15 +26,20 @@ class Profile extends React.Component {
     if (isLoggedIn) {
       return (
         <div>
-          <h1>Welcome, {username}!</h1>
-          <button onClick={this.handleLogout}>Logout</button>
+          <Header as="h1">Welcome, {username}!</Header>
+          <Button onClick={this.handleLogout}>Logout</Button>
         </div>
       );
     } else {
       return (
-        <div>
-          <h1>Please login to view your profile</h1>
-          <Login onLogin={this.handleLogin} />
+        <div className='login-page'>
+          <div className='login-box'>
+            <Header as="h1">Please login to view your profile</Header>
+            <Login onLogin={this.handleLogin} />
+            <div className="signup-link">
+              Don't have an account? <Link to="/signup">Sign up</Link>
+            </div>
+          </div>
         </div>
       );
     }
@@ -91,7 +74,7 @@ class Login extends React.Component {
       <form onSubmit={this.handleFormSubmit}>
         <div>
           <label htmlFor="username">Username:</label>
-          <input
+          <Input
             type="text"
             id="username"
             name="username"
@@ -101,7 +84,7 @@ class Login extends React.Component {
         </div>
         <div>
           <label htmlFor="password">Password:</label>
-          <input
+          <Input
             type="password"
             id="password"
             name="password"
@@ -109,11 +92,10 @@ class Login extends React.Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <button type="submit">Login</button>
+        <Button type="submit">Login</Button>
       </form>
     );
   }
 }
 
 export default Profile;
-

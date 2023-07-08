@@ -19,12 +19,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <Container text textAlign="center">
-        {history.location.pathname !== '/' && (
-          <Button basic inverted color="black" onClick={goBack}>
-            &larr; Go Back
-          </Button>
-        )}
+      <Container text textAlign="center">        
         <div className="footer-buttons" ref={ref}>
           <Button.Group widths="5" fluid>
             <Button as={Link} to="/" icon basic inverted>
