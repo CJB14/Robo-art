@@ -63,7 +63,7 @@ class Signup extends React.Component {
               />
             </div>
             <Button type="submit" className='login-btn'>Sign Up</Button>
-          </form>
+          </form>          
           <div className="login-link">
             Already have an account? <Link to="/login">Log in</Link>
           </div>

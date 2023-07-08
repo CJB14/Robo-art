@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Input, Button } from 'semantic-ui-react';
+import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
@@ -25,9 +25,48 @@ class Profile extends React.Component {
 
     if (isLoggedIn) {
       return (
-        <div>
-          <Header as="h1">Welcome, {username}!</Header>
-          <Button onClick={this.handleLogout}>Logout</Button>
+        <div className="profile-page">
+          <Container text>
+            <Header as="h1">Welcome, {username}!</Header>
+            <Grid columns={2} stackable>
+              <Grid.Row>
+                <Grid.Column width={10}>
+                  <Grid columns={3}>
+                    <Grid.Column>
+                      <Statistic>
+                        <Statistic.Value>100</Statistic.Value>
+                        <Statistic.Label>Followers</Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Statistic>
+                        <Statistic.Value>50</Statistic.Value>
+                        <Statistic.Label>Following</Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                    <Grid.Column>
+                      <Statistic>
+                        <Statistic.Value>500</Statistic.Value>
+                        <Statistic.Label>Likes</Statistic.Label>
+                      </Statistic>
+                    </Grid.Column>
+                  </Grid>
+                </Grid.Column>
+                <Grid.Column width={6}>
+                <div className="search-container">
+          <Input
+            placeholder="Search images..."
+            value={this.state.searchTerm}
+            onChange={this.handleSearchChange}
+          />
+          <Button primary onClick={this.handleSearchSubmit}>
+            Search
+          </Button>
+        </div>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Container>
         </div>
       );
     } else {
