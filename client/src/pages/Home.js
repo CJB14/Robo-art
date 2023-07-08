@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Input, Button } from 'semantic-ui-react';
 import '../App.css';
-import Footer from '../components/Footer';
+
 
 class Home extends React.Component {
   constructor(props) {
