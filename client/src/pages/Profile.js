@@ -92,7 +92,7 @@ class Login extends React.Component {
             onChange={this.handleInputChange}
           />
         </div>
-        <Button type="submit">Login</Button>
+        <Button type="submit" className='login-btn'>Login</Button>
       </form>
     );
   }
