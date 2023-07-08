@@ -19,6 +19,19 @@ h1 {
   color: var(--orange);
 }
 
+.statistics-row {
+  display: flex;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.statistic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
 .search-container {
   display: flex;
   flex-direction: row;
@@ -64,20 +77,22 @@ h1 {
   margin-top: 50px;
 }
 
-
-
 .footer {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   background-color: transparent;
+  
 }
 
 .footer-buttons {
   display: flex;
-  justify-content: space-between;
-  
+  justify-content: space-around;  
+}
+
+#footnote {
+  font-size: x-small;
 }
 
 .pages-container {

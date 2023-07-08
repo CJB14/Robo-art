@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Input, Button } from 'semantic-ui-react';
+import { Header, Input, Button, Image } from 'semantic-ui-react';
 import '../App.css';
 
 
@@ -19,6 +19,28 @@ class Home extends React.Component {
   handleSearchSubmit = () => {
     // Perform search logic using the searchTerm
     // and update the randomImages state with the results
+    const { searchTerm } = this.state;
+    const apiKey = '2667375d-8f2d-448a-8acb-a0c5e20228a2';
+    fetch('https://api.deepai.org/api/text2img', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'api-key': apiKey
+      },
+      body: JSON.stringify({
+        text: searchTerm,
+        num_images: 6
+      })
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Update the randomImages state with the fetched images
+        this.setState({ randomImages: data.images });
+      })
+      .catch((error) => {
+        console.error('Error fetching images:', error);
+        // Handle any error that occurred during the image fetch
+      });
   };
 
   render() {

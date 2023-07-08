@@ -31,38 +31,32 @@ class Profile extends React.Component {
             <Grid columns={2} stackable>
               <Grid.Row>
                 <Grid.Column width={10}>
-                  <Grid columns={3}>
-                    <Grid.Column>
+                  <div className="statistics-row">
+                    <div className="statistic">
                       <Statistic>
                         <Statistic.Value>100</Statistic.Value>
                         <Statistic.Label>Followers</Statistic.Label>
                       </Statistic>
-                    </Grid.Column>
-                    <Grid.Column>
+                    </div>
+                    <div className="statistic">
                       <Statistic>
                         <Statistic.Value>50</Statistic.Value>
                         <Statistic.Label>Following</Statistic.Label>
                       </Statistic>
-                    </Grid.Column>
-                    <Grid.Column>
+                    </div>
+                    <div className="statistic">
                       <Statistic>
                         <Statistic.Value>500</Statistic.Value>
                         <Statistic.Label>Likes</Statistic.Label>
                       </Statistic>
-                    </Grid.Column>
-                  </Grid>
+                    </div>
+                  </div>
                 </Grid.Column>
                 <Grid.Column width={6}>
-                <div className="search-container">
-          <Input
-            placeholder="Search images..."
-            value={this.state.searchTerm}
-            onChange={this.handleSearchChange}
-          />
-          <Button primary onClick={this.handleSearchSubmit}>
-            Search
-          </Button>
-        </div>
+                  <div className="search-container">
+                    <Input icon="search" placeholder="Search..." fluid />
+                    <Button primary>Submit</Button>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
             </Grid>
