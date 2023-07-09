@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Button, Container } from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList } from 'react-icons/fa';
 import '../../App.css';
 
@@ -10,7 +11,11 @@ const Footer = () => {
   const isLoggedIn = true; // Replace with your authentication state
   const handleLogout = () => {
     // Implement your logout logic here
-  };  
+  };
+
+  const handleLogin = () => {
+    history.push('/login');
+  };
 
   const ref = useRef();
 
@@ -18,27 +23,36 @@ const Footer = () => {
     <footer className="footer">
       <Container text textAlign="center">
         <div className="footer-buttons" ref={ref}>
-          <Button.Group widths="5" fluid>
-            <Button as={Link} to="/" icon basic inverted>
+          <Button.Group widths="6" fluid>
+            <Button as={Link} to="/" basic inverted>
+              <Icon name="home" />
               <FaHome />
             </Button>
-            <Button as={Link} to="/profile" icon basic inverted>
+            <Button as={Link} to="/profile" basic inverted>
+              <Icon name="user" />
               <FaUser />
             </Button>
-            <Button as={Link} to="/cart" icon basic inverted>
+            <Button as={Link} to="/cart" basic inverted>
+              <Icon name="shopping cart" />
               <FaShoppingCart />
             </Button>
-            <Button as={Link} to="/favorites" icon basic inverted>
+            <Button as={Link} to="/favorites" basic inverted>
+              <Icon name="heart" />
               <FaHeart />
             </Button>
             {isLoggedIn ? (
-              <Button basic inverted onClick={handleLogout}>
-                Logout
-              </Button>
+              <>
+                <Button as={Link} to="/orderHistory" basic inverted>
+                  <FaList />
+                </Button>
+                <Button basic inverted onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
             ) : (
-              <Button as={Link} to="/list" icon basic inverted>
-                <FaList />
-              </Button>
+              <Button basic inverted onClick={handleLogin}>
+                  Login
+                </Button>
             )}
           </Button.Group>
         </div>

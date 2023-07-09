@@ -20,7 +20,7 @@ class Home extends React.Component {
     // Perform search logic using the searchTerm
     // and update the randomImages state with the results
     const { searchTerm } = this.state;
-    const apiKey = '2667375d-8f2d-448a-8acb-a0c5e20228a2';
+    const apiKey = process.env.DEEPART_API_KEY;
     fetch('https://api.deepai.org/api/text2img', {
       method: 'POST',
       headers: {
