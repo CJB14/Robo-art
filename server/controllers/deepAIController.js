@@ -6,8 +6,8 @@ deepai.setApiKey('2667375d-8f2d-448a-8acb-a0c5e20228a2');
 
 const text2img = async (req, res) => {
     try {
-      const { text } = req.body; // Assuming the user's input text is provided in the request body
-      // const { userId } = req.session;
+      const { text } = req.body;
+      const { userId } = req.session;
       
       // Call 'deepai' API with the provided text
       const resp = await deepai.callStandardApi("stable-diffusion", { text });
@@ -19,7 +19,7 @@ const text2img = async (req, res) => {
         const product = new Product({
         description: text,
         imageUrl: resp.output_url,
-        // artist: userId, 
+        artist: userId, 
       })
   
       await product.save();
