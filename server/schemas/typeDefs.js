@@ -7,7 +7,7 @@ const typeDefs = gql`
         email: String!
         orders: [Order] 
         products: [Product]
-        # favorites: [Product]
+        favorites: [Product]
     }
 
     type Order {
@@ -26,11 +26,11 @@ const typeDefs = gql`
         orderStatus: OrderStatus
     }
 
-    type Category {
-        _id: ID!
-        name: String!
-        products: [Product]
-    }
+    # type Category {
+    #     _id: ID!
+    #     name: String!
+    #     products: [Product]
+    # }
 
     type Product {
         _id: ID!
