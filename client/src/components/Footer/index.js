@@ -13,13 +13,17 @@ const Footer = () => {
     // Implement your logout logic here
   };
 
+  const handleLogin = () => {
+    history.push('/login');
+  };
+
   const ref = useRef();
 
   return (
     <footer className="footer">
       <Container text textAlign="center">
         <div className="footer-buttons" ref={ref}>
-          <Button.Group widths="5" fluid>
+          <Button.Group widths="6" fluid>
             <Button as={Link} to="/" basic inverted>
               <Icon name="home" />
               <FaHome />
@@ -37,14 +41,18 @@ const Footer = () => {
               <FaHeart />
             </Button>
             {isLoggedIn ? (
-              <Button basic inverted onClick={handleLogout}>
-                Logout
-              </Button>
+              <>
+                <Button as={Link} to="/orderHistory" basic inverted>
+                  <FaList />
+                </Button>
+                <Button basic inverted onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
             ) : (
-              <Button as={Link} to="/list" basic inverted>
-                <Icon name="list" />
-                <FaList />
-              </Button>
+              <Button basic inverted onClick={handleLogin}>
+                  Login
+                </Button>
             )}
           </Button.Group>
         </div>
