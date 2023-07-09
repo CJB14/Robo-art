@@ -28,34 +28,38 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className='login-page'>
-        <Header as="h1">Login</Header>
-        <form onSubmit={this.handleFormSubmit}>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <Input
-              type="text"
-              id="username"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInputChange}
-            />
+      <div className="login-page">
+        <div className="login-box">
+        <Container text>
+          <Header as="h1">Login</Header>
+          <form onSubmit={this.handleFormSubmit}>
+            <div className="form-field">
+              <label htmlFor="username">Username:</label>
+              <Input
+                type="text"
+                id="username"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div className="form-field">
+              <label htmlFor="password">Password:</label>
+              <Input
+                type="password"
+                id="password"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <Button type="submit" className='login-btn'>Login</Button>
+          </form>
+          <div className="signup-link">
+            Don't have an account? <Link to="/signup">Sign up</Link>
           </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <Input
-              type="password"
-              id="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <Button type="submit">Login</Button>
-        </form>
-        <div className="signup-link">
-          Don't have an account? <Link to="/signup">Sign up</Link>
-        </div>
+        </Container>
+      </div>
       </div>
     );
   }
