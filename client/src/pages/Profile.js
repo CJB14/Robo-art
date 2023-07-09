@@ -8,7 +8,8 @@ class Profile extends React.Component {
     super(props);
     this.state = {
       username: '',
-      isLoggedIn: false
+      isLoggedIn: false,
+      favorites: [],
     };
   }
 
@@ -17,7 +18,7 @@ class Profile extends React.Component {
   };
 
   handleLogout = () => {
-    this.setState({ username: '', isLoggedIn: false });
+    this.setState({ username: '', isLoggedIn: false, favorites: [] });
   };
 
   render() {
