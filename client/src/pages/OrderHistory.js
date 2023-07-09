@@ -1,8 +1,11 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
-import { Container, Card, Image } from 'semantic-ui-react';
+import { Container, Card, Image, Icon } from 'semantic-ui-react';
+
+import '../App.css';
 
 function OrderHistory() {
   const { data } = useQuery(QUERY_USER);
@@ -15,7 +18,11 @@ function OrderHistory() {
   return (
     <div className="order-history-page">
       <Container>
-        <Link to="/">← Back to Products</Link>
+      <div className="back-to-products">
+          <Link to="/">
+            <Icon name="arrow alternate circle left" className="back-icon" />
+          </Link>
+        </div>
 
         {user ? (
           <>
