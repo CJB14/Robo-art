@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Profile from './pages/Profile';
-import NoMatch from './pages/NoMatch';
+import NoMatch from './pages/noMatch';
 import { StoreProvider } from './utils/GlobalState';
 import OrderHistory from './pages/OrderHistory';
 import Detail from './pages/Detail';
@@ -51,8 +51,8 @@ function App() {
               <Route path="/logout" component={Logout} />
               <Route path="/orderHistory" component={OrderHistory} />
               <Route path="/products/:id" component={Detail} />
-              <Route path="*" component={NoMatch} />
               <Route exact path="/signup" component={Signup} />
+              <Route path="*" component={NoMatch} />
             </Switch>
             <Footer />
           </StoreProvider>
