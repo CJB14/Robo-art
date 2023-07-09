@@ -10,7 +10,9 @@ const Footer = () => {
   const isLoggedIn = true; // Replace with your authentication state
   const handleLogout = () => {
     // Implement your logout logic here
-  };  
+    localStorage.removeItem('id_token');
+    window.location.assign('/');
+  };
 
   const ref = useRef();
 
@@ -32,11 +34,16 @@ const Footer = () => {
               <FaHeart />
             </Button>
             {isLoggedIn ? (
-              <Button basic inverted onClick={handleLogout}>
-                Logout
-              </Button>
+              <>
+                <Button as={Link} to="/orderHistory" icon basic inverted>
+                  <FaList />
+                </Button>
+                <Button basic inverted onClick={handleLogout}>
+                  Logout
+                </Button>
+              </>
             ) : (
-              <Button as={Link} to="/list" icon basic inverted>
+              <Button as={Link} to="/login" icon basic inverted>
                 <FaList />
               </Button>
             )}

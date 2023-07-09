@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
+import { Container, Card, Image } from 'semantic-ui-react';
 
 function OrderHistory() {
   const { data } = useQuery(QUERY_USER);
@@ -13,8 +13,8 @@ function OrderHistory() {
   }
 
   return (
-    <>
-      <div className="container my-1">
+    <div className="order-history-page">
+      <Container>
         <Link to="/">← Back to Products</Link>
 
         {user ? (
@@ -29,23 +29,25 @@ function OrderHistory() {
                 </h3>
                 <div className="flex-row">
                   {order.products.map(({ _id, image, name, price }, index) => (
-                    <div key={index} className="card px-1 py-1">
+                    <Card key={index} className="px-1 py-1">
                       <Link to={`/products/${_id}`}>
-                        <img alt={name} src={`/images/${image}`} />
-                        <p>{name}</p>
+                        <Image src={`/images/${image}`} alt={name} />
+                        <Card.Content>
+                          <Card.Description>{name}</Card.Description>
+                        </Card.Content>
                       </Link>
-                      <div>
+                      <Card.Content extra>
                         <span>${price}</span>
-                      </div>
-                    </div>
+                      </Card.Content>
+                    </Card>
                   ))}
                 </div>
               </div>
             ))}
           </>
         ) : null}
-      </div>
-    </>
+      </Container>
+    </div>
   );
 }
 
