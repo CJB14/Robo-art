@@ -23,40 +23,39 @@ class Login extends React.Component {
     // Perform login logic here, e.g., send API request, validate credentials, etc.
     // You can access the username and password entered by the user using `username` and `password` variables.
     // You can also update the state or perform any necessary actions based on the login result.
+    this.props.onLogin(username);
   };
 
   render() {
     return (
       <div className='login-page'>
-        <Container text>
-          <Header as="h1">Login</Header>
-          <form onSubmit={this.handleFormSubmit}>
-            <div>
-              <label htmlFor="username">Username:</label>
-              <Input
-                type="text"
-                id="username"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <Button type="submit" className='login-btn'>Login</Button>
-          </form>
-          <div className="signup-link">
-            Don't have an account? <Link to="/signup">Sign up</Link>
+        <Header as="h1">Login</Header>
+        <form onSubmit={this.handleFormSubmit}>
+          <div>
+            <label htmlFor="username">Username:</label>
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleInputChange}
+            />
           </div>
-        </Container>
+          <div>
+            <label htmlFor="password">Password:</label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleInputChange}
+            />
+          </div>
+          <Button type="submit">Login</Button>
+        </form>
+        <div className="signup-link">
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </div>
       </div>
     );
   }

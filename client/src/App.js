@@ -18,6 +18,7 @@ import OrderHistory from './pages/OrderHistory';
 import Detail from './pages/Detail';
 import Footer from './components/Footer';
 import Signup from './pages/Signup';
+import Favorites from './pages/Favorites';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,6 +54,7 @@ function App() {
               <Route path="/products/:id" component={Detail} />
               <Route path="*" component={NoMatch} />
               <Route exact path="/signup" component={Signup} />
+              <Route exact path="/favorites" component={Favorites} />
             </Switch>
             <Footer />
           </StoreProvider>

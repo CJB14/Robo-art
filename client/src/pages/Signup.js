@@ -1,76 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header, Input, Button, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import Auth from '../utils/auth';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
 
-class Signup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      email: '',
-      password: ''
-    };
-  }
+function Signup(props) {
+  const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+  const [addUser] = useMutation(ADD_USER);
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const { username, email, password } = this.state;
-    // Perform signup logic here, e.g., send API request, validate inputs, etc.
-    // You can access the username, email, and password entered by the user using `username`, `email`, and `password` variables.
-    // You can also update the state or perform any necessary actions based on the signup result.
+    try {
+      const { data } = await addUser({
+        variables: formState,
+      });
+      const token = data.addUser.token;
+      Auth.login(token);
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  render() {
-    return (
-      <div className='signup-page'>
-        <Container text>
-          <Header as="h1">Sign Up</Header>
-          <form onSubmit={this.handleFormSubmit}>
-            <div>
-              <label htmlFor="username">Username:</label>
-              <Input
-                type="text"
-                id="username"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="email">Email:</label>
-              <Input
-                type="email"
-                id="email"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <div>
-              <label htmlFor="password">Password:</label>
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <Button type="submit" className='login-btn'>Sign Up</Button>
-          </form>          
-          <div className="login-link">
-            Already have an account? <Link to="/login">Log in</Link>
-          </div>
-        </Container>
-      </div>
-    );
-  }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  return (
+    <Container>
+      <Link to="/login">← Go to Login</Link>
+      <Header as="h2">Signup</Header>
+      <form onSubmit={handleFormSubmit}>
+        <div className="form-field">
+          <label htmlFor="username">Username:</label>
+          <Input
+            placeholder="Enter username"
+            name="username"
+            type="text"
+            id="username"
+            value={formState.username}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="email">Email:</label>
+          <Input
+            placeholder="Enter email"
+            name="email"
+            type="email"
+            id="email"
+            value={formState.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-field">
+          <label htmlFor="password">Password:</label>
+          <Input
+            placeholder="Enter password"
+            name="password"
+            type="password"
+            id="password"
+            value={formState.password}
+            onChange={handleChange}
+          />
+        </div>
+        <Button type="submit">Submit</Button>
+      </form>
+    </Container>
+  );
 }
 
 export default Signup;
