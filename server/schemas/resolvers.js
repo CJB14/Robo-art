@@ -4,6 +4,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
+const bcrypt = require('bcrypt');
 
 const resolvers = {
     Query: {
@@ -11,34 +12,50 @@ const resolvers = {
       // categories: async () => {
       //   return await Category.find();
       // },
-          products: async () => {
-            return await Product.find();
-          },
-          product: async (parent, { _id }) => {
-            return await Product.findById(_id);
-          },
-          user: async (parent, args, context) => {
-            if (context.user) {
-              const user = await User.findById(context.user._id).populate('orders');
-      
-              user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-      
-              return user;
-            }
-      
-            throw new AuthenticationError('Not logged in');
-          },
-          order: async (parent, { _id }, context) => {
-            if (context.user) {
-              const user = await User.findById(context.user._id).populate('orders');
-      
-              return user.orders.id(_id);
-            }
-      
-            throw new AuthenticationError('Not logged in');
-          },
-
-          //TO DO - EDIT CHECKOUT RE: STRIPE
+      products: async (parent, { category, name }) => {
+        const params = {};
+  
+        if (category) {
+          params.category = category;
+        }
+  
+        if (name) {
+          params.name = {
+            $regex: name
+          };
+        }
+  
+        return await Product.find(params).populate('category');
+      },
+      product: async (parent, { _id }) => {
+        return await Product.findById(_id).populate('category');
+      },
+      user: async (parent, args, context) => {
+        if (context.user) {
+          const user = await User.findById(context.user._id).populate({
+            path: 'orders.products',
+            populate: 'category'
+          });
+  
+          user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+  
+          return user;
+        }
+  
+        throw new AuthenticationError('Not logged in');
+      },
+      order: async (parent, { _id }, context) => {
+        if (context.user) {
+          const user = await User.findById(context.user._id).populate({
+            path: 'orders.products',
+            populate: 'category'
+          });
+  
+          return user.orders.id(_id);
+        }
+  
+        throw new AuthenticationError('Not logged in');
+      },
       checkout: async (parent, args, context) => {
         const url = new URL(context.headers.referer).origin;
         const order = new Order({ products: args.products });
@@ -76,15 +93,19 @@ const resolvers = {
         return { session: session.id };
       }
     },
-
-    //TO DO EDIT MUTATIONS
     Mutation: {
       // Resolver functions for mutations
-      addUser: async (parent, args) => {
-        const user = await User.create(args);
-        const token = signToken(user);
+      // addUser: async (parent, {username, email, password}) => {
+      //   const user = await User.create({username, email, password});
+      //   const token = signToken(user);
   
-        return { token, user };
+      //   return { token, user };
+          // Resolver functions for mutations
+    addUser: async (parent, { username, email, password }) => {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const user = await User.create({ username, email, password: hashedPassword });
+      const token = signToken(user);
+      return { token, user };
       },
       addOrder: async (parent, { products }, context) => {
         console.log(context);

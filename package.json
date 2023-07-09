@@ -19,6 +19,7 @@
     "@stripe/react-stripe-js": "^2.1.1",
     "@stripe/stripe-js": "^1.54.1",
     "apollo-server-express": "^2.15.0",
-    "bcrypt": "^5.1.0"
+    "bcrypt": "^5.1.0",
+    "gulp": "^4.0.2"
   }
 }

@@ -3,11 +3,12 @@ import { Header, Input, Button, Container } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import '../App.css';
 
-class Login extends React.Component {
+class Signup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
+      email: '',
       password: ''
     };
   }
@@ -19,17 +20,17 @@ class Login extends React.Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const { username, password } = this.state;
-    // Perform login logic here, e.g., send API request, validate credentials, etc.
-    // You can access the username and password entered by the user using `username` and `password` variables.
-    // You can also update the state or perform any necessary actions based on the login result.
+    const { username, email, password } = this.state;
+    // Perform signup logic here, e.g., send API request, validate inputs, etc.
+    // You can access the username, email, and password entered by the user using `username`, `email`, and `password` variables.
+    // You can also update the state or perform any necessary actions based on the signup result.
   };
 
   render() {
     return (
-      <div className='login-page'>
+      <div className='signup-page'>
         <Container text>
-          <Header as="h1">Login</Header>
+          <Header as="h1">Sign Up</Header>
           <form onSubmit={this.handleFormSubmit}>
             <div>
               <label htmlFor="username">Username:</label>
@@ -38,6 +39,16 @@ class Login extends React.Component {
                 id="username"
                 name="username"
                 value={this.state.username}
+                onChange={this.handleInputChange}
+              />
+            </div>
+            <div>
+              <label htmlFor="email">Email:</label>
+              <Input
+                type="email"
+                id="email"
+                name="email"
+                value={this.state.email}
                 onChange={this.handleInputChange}
               />
             </div>
@@ -51,10 +62,10 @@ class Login extends React.Component {
                 onChange={this.handleInputChange}
               />
             </div>
-            <Button type="submit" className='login-btn'>Login</Button>
-          </form>
-          <div className="signup-link">
-            Don't have an account? <Link to="/signup">Sign up</Link>
+            <Button type="submit" className='login-btn'>Sign Up</Button>
+          </form>          
+          <div className="login-link">
+            Already have an account? <Link to="/login">Log in</Link>
           </div>
         </Container>
       </div>
@@ -62,4 +73,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default Signup;
