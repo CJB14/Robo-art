@@ -50,21 +50,3 @@ const Text2ImgComponent = ({ userId }) => {
 };
 
 export default Text2ImgComponent;
-
-//TO DO: add to router
-// import React from 'react';
-// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import CreateArtworkPage from './CreateArtworkPage';
-
-// const App = () => {
-//   return (
-//     <Router>
-//       <Switch>
-//         <Route path="/create-artwork" component={CreateArtworkPage} />
-//         {/* Other routes */}
-//       </Switch>
-//     </Router>
-//   );
-// };
-
-// export default App;

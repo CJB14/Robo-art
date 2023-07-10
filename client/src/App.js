@@ -18,6 +18,7 @@ import OrderHistory from './pages/OrderHistory';
 // import Detail from './pages/Detail';
 import Signup from './pages/Signup';
 import Favorites from './pages/Favorites';
+// import ProtectedRoute from './components/ProtectedRoute';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -46,9 +47,9 @@ function App() {
           <StoreProvider>
             <Switch>
               <Route exact path="/" component={Home} />
-              <Route exact path="/profile" component={Profile} />
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
+              <Route exact path="/profile" component={Profile} />
               <Route path="/orderHistory" component={OrderHistory} />
               <Route path="/product/:id" component={Artwork} />
               {/* <Route path="/products/:id" component={Detail} /> */}
