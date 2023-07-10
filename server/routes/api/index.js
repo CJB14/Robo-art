@@ -1,8 +1,6 @@
 const router = require('express').Router();
-const printOrderRoutes = require('./printOrderRoutes.js');
 const deepAIRoutes = require('./deepAIRoutes.js');
 
-router.use('/order', printOrderRoutes);
-router.use('/product', deepAIRoutes);
+router.use('/text2img', deepAIRoutes);
 
 module.exports = router;

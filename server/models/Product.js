@@ -4,29 +4,30 @@ const dayjs = require('dayjs');
 const productSchema = new Schema({
     title: {
         type: String,
-        required: true,
+        //should the user select the title before or after the image is generated?
+        // required: true,
         trim: true,
     },
     imageURL: {
-        //could be changed if need be
         type: String,
-        required: true,
+        // required: true,
     },
     description: {
         type: String,
         required: true,
-        unique: true,
-        trim: true,
     },
     artist: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true,
     },
+    //TO DO: EDIT CATEGORY MODEL, TYPEDEFS, RESOLVERS, QUERIES
     // category: {
     //     type: Schema.Types.ObjectId,
     //     ref: 'Category',
     // },
+    
+    //TO DO: ADD DATE CREATED
 });
 
 //day js virtual
