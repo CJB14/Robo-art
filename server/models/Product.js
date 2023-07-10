@@ -26,6 +26,7 @@ const productSchema = new Schema({
     //     type: Schema.Types.ObjectId,
     //     ref: 'Category',
     // },
+    
     //TO DO: ADD DATE CREATED
 });
 

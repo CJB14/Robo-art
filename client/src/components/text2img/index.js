@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 
-const text2imgComponent = () => {
+const Text2ImgComponent = ({ userId }) => {
   const [text, setText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [error, setError] = useState('');
 
   const handleTextChange = (event) => {
     setText(event.target.value);
   };
 
-  const handleGenerateImage = async () => {
+  const generateImg = async () => {
     try {
       const response = await fetch('/api/text2img', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, userId}),
       });
 
       const data = await response.json();
@@ -23,21 +24,47 @@ const text2imgComponent = () => {
         setImageUrl(data.imageUrl);
       } else {
         console.error('Error:', data.message);
+        setError(data.error || 'Something went wrong');
       }
     } catch (error) {
       console.error('Error:', error);
+      setError('Something went wrong');
     }
   };
 
   return (
     <div>
-      <textarea value={text} onChange={handleTextChange} />
+       {imageUrl ? (
+        <img src={imageUrl} alt="Generated Image" />
+      ) : (
+        <>
+          <textarea value={text} onChange={handleTextChange} />
 
-      <button onClick={handleGenerateImage}>Generate Image</button>
+          <button onClick={generateImg}>Generate Image</button>
+        </>
+      )}
 
-      {imageUrl && <img src={imageUrl} alt="Generated Image" />}
+      {error && <p>Error: {error}</p>}
     </div>
   );
 };
 
-export default text2imgComponent;
+export default Text2ImgComponent;
+
+//TO DO: add to router
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import CreateArtworkPage from './CreateArtworkPage';
+
+// const App = () => {
+//   return (
+//     <Router>
+//       <Switch>
+//         <Route path="/create-artwork" component={CreateArtworkPage} />
+//         {/* Other routes */}
+//       </Switch>
+//     </Router>
+//   );
+// };
+
+// export default App;
