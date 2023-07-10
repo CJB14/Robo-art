@@ -15,7 +15,10 @@ class Profile extends React.Component {
   }
 
   handleLogin = (username) => {
-    this.setState({ username, isLoggedIn: true });
+    this.setState({ username, isLoggedIn: true }, () => {
+      
+      window.location.href = '/profile';
+    });
   };
 
   handleLogout = () => {
@@ -67,73 +70,10 @@ class Profile extends React.Component {
         </div>
       );
     } else {
-      return (
-        window.location.assign('/login')
-        // <div className='login-page'>
-        //   <div className='login-box'>
-        //     <Header as="h1">Please login to view your profile</Header>
-        //     <Login onLogin={this.handleLogin} />
-        //     <div className="signup-link">
-        //       Don't have an account? <Link to="/signup">Sign up</Link>
-        //     </div>
-        //   </div>
-        //   <Footer />
-        // </div>
-      );
+      // User is not logged in, redirect to login page
+      window.location.href = '/login';
+      return null; // or render a loading state or redirect component
     }
-  }
-}
-
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
-
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    const { username, password } = this.state;
-    // Perform login logic here, e.g., send API request, validate credentials, etc.
-    // You can access the username and password entered by the user using `username` and `password` variables.
-    // You can also update the state or perform any necessary actions based on the login result.
-    this.props.onLogin(username);
-  };
-
-  render() {
-    return (
-      <form onSubmit={this.handleFormSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <Input
-            type="text"
-            id="username"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <Input
-            type="password"
-            id="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleInputChange}
-          />
-        </div>
-        <Button type="submit" className='login-btn'>Login</Button>
-      </form>
-    );
-    <Footer />
   }
 }
 
