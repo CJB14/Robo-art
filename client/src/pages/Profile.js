@@ -3,6 +3,7 @@ import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semant
 import { Link } from 'react-router-dom';
 import '../App.css';
 import Footer from '../components/Footer';
+import Auth from '../utils/auth';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -14,21 +15,10 @@ class Profile extends React.Component {
     };
   }
 
-  handleLogin = (username) => {
-    this.setState({ username, isLoggedIn: true }, () => {
-      
-      window.location.href = '/profile';
-    });
-  };
-
-  handleLogout = () => {
-    this.setState({ username: '', isLoggedIn: false, favorites: [] });
-  };
-
   render() {
-    const { username, isLoggedIn } = this.state;
+    const { username,  } = this.state;
 
-    if (isLoggedIn) {
+    if (Auth.loggedIn()) {
       return (
         <div className="profile-page">
           <Container text>
