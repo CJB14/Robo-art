@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import Auth from '../utils/auth'
 import '../App.css';
 import Footer from '../components/Footer';
+import Auth from '../utils/auth';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -37,9 +38,9 @@ class Profile extends React.Component {
   }
 
   render() {
-    const { username, isLoggedIn } = this.state;
+    const { username,  } = this.state;
 
-    if (isLoggedIn) {
+    if (Auth.loggedIn()) {
       return (
         <div className="profile-page">
           <Container text>
