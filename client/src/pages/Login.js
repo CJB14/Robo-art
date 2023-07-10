@@ -1,127 +1,76 @@
-/*import React from 'react';
-
-
+import React, { useState } from 'react';
+import { Header, Input, Button, Container } from 'semantic-ui-react';
+import { Link, useHistory } from 'react-router-dom';
+import '../App.css';
 import Auth from '../utils/auth';
+import Footer from '../components/Footer';
+import { LOGIN } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
-const LoginPage = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Login = () => {
+  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
 
-    // TODO: Implement login functionality using the provided email and password
-    console.log('Login form submitted');
-    console.log('Username:', username);
-    console.log('Email:', email);
-    console.log('Password:', password);
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const mutationResponse = await login({
+        variables: { username: formState.username, password: formState.password },
+      });
+    const token = mutationResponse.data.login.token;
+    Auth.login(token);
+    // Redirect to the profile page
+    window.location.assign('/profile');
+  } catch (e) {
+    console.log(e);
+    }
+  };
 
-    // Reset the form fields
-    setUsername('');
-    setEmail('');
-    setPassword('');
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
     <div className="login-page">
-      <h2>Login to Robo Art</h2>
-      <form onSubmit={handleSubmit}>
-
-      <div className="form-group">
-          <label htmlFor="username">User Name:</label>
-          <input
-            type="username"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+      <Container text>
+        <Header as="h1">Login</Header>
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-field">
+            <label htmlFor="username">Username:</label>
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              value={formState.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="password">Password:</label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </div>
+          <Button type="submit" className="login-btn">
+            Login
+          </Button>
+        </form>
+        <div className="signup-link">
+          Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
-
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+      </Container>
+      <Footer />
     </div>
   );
 };
 
-export default LoginPage;*/
-
-import React from 'react';
-
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
-
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    const { username, password } = this.state;
-    // Perform login logic here, e.g., send API request, validate credentials, etc.
-    // You can access the username and password entered by the user using `username` and `password` variables.
-    // You can also update the state or perform any necessary actions based on the login result.
-  };
-
-  render() {
-    return (
-      <div>
-        <h1>Login</h1>
-        <form onSubmit={this.handleFormSubmit}>
-          <div>
-            <label htmlFor="username">Username:</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleInputChange}
-            />
-          </div>
-          <button type="submit">Login</button>
-        </form>
-      </div>
-    );
-  }
-}
-
 export default Login;
-

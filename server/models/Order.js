@@ -2,21 +2,16 @@ const { Schema, model } = require('mongoose');
 const dayjs = require('dayjs');
 
 const orderSchema = new Schema({
-  product: {
+  products: {
     type: Schema.Types.ObjectId,
     ref: 'Product',
     required: true,
   },
-  artist: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  buyer: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
+  // buyer: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User',
+  //   required: true,
+  // },
   purchaseDate: {
     type: String,
     default: () => dayjs().format(),
