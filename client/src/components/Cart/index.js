@@ -13,7 +13,6 @@ import { idbPromise } from '../../utils/helpers';
 //TO DO: EDIT
 import { useStoreContext } from '../../utils/GlobalState';
 
-
 const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
 
 const Cart = () => {
