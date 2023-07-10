@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Text2ImgComponent from '../components/Text2Img';
 import jwtDecode from 'jwt-decode';
 
-const artworkPage = () => {
+const ArtworkPage = () => {
 
   const [userId, setUserId] = useState('');
 
@@ -29,4 +29,4 @@ const artworkPage = () => {
   );
 };
 
-export default artworkPage;
+export default ArtworkPage;

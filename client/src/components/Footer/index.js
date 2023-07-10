@@ -13,14 +13,13 @@ const Footer = () => {
 
   const handleLogin = async () => {
     try {
-      window.location.assign('/login');
-      // const { email, password } = formState;
-      // const { data } = await login({
-      //   variables: { email, password },
-      // });
-      // const token = data.login.token;
-      // Auth.login(token);
-      // history.push('/profile');
+      const { username, password } = formState;
+      const { data } = await login({
+      variables: { username, password },
+    });
+    const token = data.login.token;
+    Auth.login(token);
+    history.push('/profile');
     } catch (error) {
       console.log(error);
     }

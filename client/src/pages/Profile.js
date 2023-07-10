@@ -1,6 +1,8 @@
 import React from 'react';
 import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import Auth from '../utils/auth'
 import '../App.css';
 import Footer from '../components/Footer';
 
@@ -21,6 +23,15 @@ class Profile extends React.Component {
   handleLogout = () => {
     this.setState({ username: '', isLoggedIn: false, favorites: [] });
   };
+
+  componentDidMount() {
+    // Check authentication status when component mounts
+    console.log(Auth.loggedIn()); // Add this console.log statement
+    if (Auth.loggedIn()) {
+      const profile = Auth.getProfile();
+      this.setState({ username: profile.username, isLoggedIn: true });
+    }
+  }
 
   render() {
     const { username, isLoggedIn } = this.state;
@@ -67,19 +78,7 @@ class Profile extends React.Component {
         </div>
       );
     } else {
-      return (
-        window.location.assign('/login')
-        // <div className='login-page'>
-        //   <div className='login-box'>
-        //     <Header as="h1">Please login to view your profile</Header>
-        //     <Login onLogin={this.handleLogin} />
-        //     <div className="signup-link">
-        //       Don't have an account? <Link to="/signup">Sign up</Link>
-        //     </div>
-        //   </div>
-        //   <Footer />
-        // </div>
-      );
+      return <Redirect to="/login" />;
     }
   }
 }
