@@ -57,7 +57,6 @@ function App() {
               <Route exact path="/favorites" component={Favorites} />
               <Route path="*" component={NoMatch} />
             </Switch>
-            <Footer />
           </StoreProvider>
         </div>
       </Router>
