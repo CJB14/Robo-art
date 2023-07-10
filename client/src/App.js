@@ -11,10 +11,11 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
 import Profile from './pages/Profile';
-import NoMatch from './pages/NoMatch';
+import NoMatch from './pages/noMatch';
+import Artwork from './pages/Artwork';
 import { StoreProvider } from './utils/GlobalState';
-// import OrderHistory from './pages/OrderHistory';
-import Detail from './pages/Detail';
+import OrderHistory from './pages/OrderHistory';
+// import Detail from './pages/Detail';
 import Signup from './pages/Signup';
 import Favorites from './pages/Favorites';
 
@@ -48,12 +49,13 @@ function App() {
               <Route exact path="/profile" component={Profile} />
               <Route path="/login" component={Login} />
               <Route path="/logout" component={Logout} />
-              {/* <Route path="/orderHistory" component={OrderHistory} /> */}
-              <Route path="/products/:id" component={Detail} />
-              <Route path="*" component={NoMatch} />
+              <Route path="/orderHistory" component={OrderHistory} />
+              <Route path="/product/:id" component={Artwork} />
+              {/* <Route path="/products/:id" component={Detail} /> */}
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/favorites" component={Favorites} />
-            </Switch>            
+              <Route path="*" component={NoMatch} />
+            </Switch>
           </StoreProvider>
         </div>
       </Router>

@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-const Order = require('./Order');
 
 const userSchema = new Schema({
   username: {
@@ -32,7 +31,7 @@ const userSchema = new Schema({
       ref: 'Product',
     },
   ],
-orders: [Order.schema]
+// orders: [Order.schema]
 });
 
 // pre save hook that hashes password before saving to db

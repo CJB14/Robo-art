@@ -1,6 +1,8 @@
 import React from 'react';
 import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import Auth from '../utils/auth'
 import '../App.css';
 import Footer from '../components/Footer';
 import Auth from '../utils/auth';
@@ -13,6 +15,26 @@ class Profile extends React.Component {
       isLoggedIn: false,
       favorites: [],
     };
+  }
+
+  handleLogin = (username) => {
+    this.setState({ username, isLoggedIn: true }, () => {
+      
+      window.location.href = '/profile';
+    });
+  };
+
+  handleLogout = () => {
+    this.setState({ username: '', isLoggedIn: false, favorites: [] });
+  };
+
+  componentDidMount() {
+    // Check authentication status when component mounts
+    console.log(Auth.loggedIn()); // Add this console.log statement
+    if (Auth.loggedIn()) {
+      const profile = Auth.getProfile();
+      this.setState({ username: profile.username, isLoggedIn: true });
+    }
   }
 
   render() {
@@ -60,11 +82,17 @@ class Profile extends React.Component {
         </div>
       );
     } else {
+
       // User is not logged in, redirect to login page
       window.location.href = '/login';
       return null; // or render a loading state or redirect component
+
+      return <Redirect to="/login" />;
+
     }
   }
 }
 
+
 export default Profile;
+

@@ -6,18 +6,25 @@ deepai.setApiKey('2667375d-8f2d-448a-8acb-a0c5e20228a2');
 
 const text2img = async (req, res) => {
     try {
-      const { text } = req.body; // Assuming the user's input text is provided in the request body
+      const { text } = req.body;
+      const { userId } = req.session;
+      
       // Call 'deepai' API with the provided text
-      const resp = await deepai.callStandardApi('text2img', { text });
+      const resp = await deepai.callStandardApi("stable-diffusion", { text });
   
+      // Log the value of resp.output_url
+    console.log('Output URL:', resp.output_url);
+
       // Save the image response to the database
-      const product = new Product({
+        const product = new Product({
         description: text,
-        imageUrl: resp.output_url, // Assuming the response contains the image URL
-      });
-      await product.save();
+        imageUrl: resp.output_url,
+        artist: userId, 
+      })
   
-      res.json(resp);
+      await product.save();
+
+      res.json({success: true, message: 'Image generated successfully.'});
     } catch (error) {
       console.error('Error:', error);
       res.status(500).json({ error: 'Something went wrong' });
@@ -25,5 +32,5 @@ const text2img = async (req, res) => {
   };
   
   module.exports = {
-    text2img,
+    text2img
   };
