@@ -1,10 +1,8 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_USER } from '../utils/queries';
 import { Container, Card, Image, Icon } from 'semantic-ui-react';
-
 import '../App.css';
 
 function OrderHistory() {
