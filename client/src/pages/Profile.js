@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import Auth from '../utils/auth'
 import '../App.css';
 import Footer from '../components/Footer';
-// import Auth from '../utils/auth';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -28,14 +27,14 @@ class Profile extends React.Component {
     this.setState({ username: '', isLoggedIn: false, favorites: [] });
   };
 
-  // componentDidMount() {
-  //   // Check authentication status when component mounts
-  //   console.log(Auth.loggedIn()); // Add this console.log statement
-  //   if (Auth.loggedIn()) {
-  //     const profile = Auth.getProfile();
-  //     this.setState({ username: profile.username, isLoggedIn: true });
-  //   }
-  // }
+  componentDidMount() {
+    // Check authentication status when component mounts
+    console.log(Auth.loggedIn()); // Add this console.log statement
+    if (Auth.loggedIn()) {
+      const profile = Auth.getProfile();
+      this.setState({ username: profile.username, isLoggedIn: true });
+    }
+  }
 
   render() {
     const { username,  } = this.state;
@@ -87,7 +86,7 @@ class Profile extends React.Component {
       window.location.href = '/login';
       return null; // or render a loading state or redirect component
 
-      // return <Redirect to="/login" />;
+      return <Redirect to="/login" />;
 
     }
   }

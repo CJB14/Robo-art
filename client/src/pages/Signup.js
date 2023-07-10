@@ -32,45 +32,47 @@ function Signup(props) {
   };
 
   return (
-    <Container>
-      <Link to="/login">← Go to Login</Link>
-      <Header as="h2">Signup</Header>
-      <form onSubmit={handleFormSubmit}>
-        <div className="form-field">
-          <label htmlFor="username">Username:</label>
-          <Input
-            placeholder="Enter username"
-            name="username"
-            type="text"
-            id="username"
-            value={formState.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-field">
-          <label htmlFor="email">Email:</label>
-          <Input
-            placeholder="Enter email"
-            name="email"
-            type="email"
-            id="email"
-            value={formState.email}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-field">
-          <label htmlFor="password">Password:</label>
-          <Input
-            placeholder="Enter password"
-            name="password"
-            type="password"
-            id="password"
-            value={formState.password}
-            onChange={handleChange}
-          />
-        </div>
-        <Button type="submit">Submit</Button>
-      </form>
+    <Container className="signup-page">
+      <div className="signup-box">
+        <Link to="/login" className="go-back-link">← Go to Login</Link>
+        <Header as="h2" className="signup-header">Signup</Header>
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-field">
+            <label htmlFor="username" className="form-label">Username:</label>
+            <Input
+              placeholder="Enter username"
+              name="username"
+              type="text"
+              id="username"
+              value={formState.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="email" className="form-label">Email:</label>
+            <Input
+              placeholder="Enter email"
+              name="email"
+              type="email"
+              id="email"
+              value={formState.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-field">
+            <label htmlFor="password" className="form-label">Password:</label>
+            <Input
+              placeholder="Enter password"
+              name="password"
+              type="password"
+              id="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </div>
+          <Button type="submit" className="submit-btn">Submit</Button>
+        </form>
+      </div>
     </Container>
   );
 }

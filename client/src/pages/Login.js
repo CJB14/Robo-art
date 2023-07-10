@@ -37,6 +37,7 @@ const Login = () => {
 
   return (
     <div className="login-page">
+      <div className="login-box">
       <Container text>
         <Header as="h1">Login</Header>
         <form onSubmit={handleFormSubmit}>
@@ -68,6 +69,7 @@ const Login = () => {
           Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
       </Container>
+    </div>
       <Footer />
     </div>
   );

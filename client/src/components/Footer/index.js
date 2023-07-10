@@ -1,38 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Button, Container, Input } from 'semantic-ui-react';
 import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList } from 'react-icons/fa';
 import Auth from '../../utils/auth';
-import { useMutation } from '@apollo/client';
-import { LOGIN } from '../../utils/mutations';
 
 const Footer = () => {
-  // const history = useHistory();
-  // const [formState, setFormState] = useState({ email: '', password: '' });
-  // const [login, { error }] = useMutation(LOGIN);
-
-  // const handleLogin = async () => {
-  //   try {
-  //     window.location.assign('/login');
-  //     const { username, password } = formState;
-  //     const { data } = await login({
-  //       variables: { username, password },
-  //     });
-  //     const token = data.login.token;
-  //     Auth.login(token);
-  //     history.push('/profile');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormState({
-  //     ...formState,
-  //     [name]: value,
-  //   });
-  // };
 
   return (
     <footer className="footer">
