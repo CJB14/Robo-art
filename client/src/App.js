@@ -7,7 +7,6 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Logout from './pages/Logout';
@@ -15,9 +14,8 @@ import Profile from './pages/Profile';
 import NoMatch from './pages/noMatch';
 import Artwork from './pages/Artwork';
 import { StoreProvider } from './utils/GlobalState';
-import OrderHistory from './pages/OrderHistory';
+// import OrderHistory from './pages/OrderHistory';
 // import Detail from './pages/Detail';
-import Footer from './components/Footer';
 import Signup from './pages/Signup';
 import Favorites from './pages/Favorites';
 
@@ -54,9 +52,10 @@ function App() {
               <Route path="/orderHistory" component={OrderHistory} />
               <Route path="/product" component={Artwork} />
               {/* <Route path="/products/:id" component={Detail} /> */}
+              <Route path="*" component={NoMatch} />
               <Route exact path="/signup" component={Signup} />
-               <Route exact path="/favorites" component={Favorites} />
-               <Route path="*" component={NoMatch} />
+              <Route exact path="/favorites" component={Favorites} />
+              <Route path="*" component={NoMatch} />
             </Switch>
             <Footer />
           </StoreProvider>

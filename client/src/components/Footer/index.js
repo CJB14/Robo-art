@@ -1,62 +1,73 @@
-import React, { useRef } from 'react';
+import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import { Button, Container } from 'semantic-ui-react';
-import { Icon } from 'semantic-ui-react';
+import { Button, Container, Input } from 'semantic-ui-react';
 import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList } from 'react-icons/fa';
-import '../../App.css';
+import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/client';
+import { LOGIN } from '../../utils/mutations';
 
 const Footer = () => {
   const history = useHistory();
+  const [formState, setFormState] = useState({ email: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN);
 
-  const isLoggedIn = true; // Replace with your authentication state
-  const handleLogout = () => {
-    // Implement your logout logic here
+  const handleLogin = async () => {
+    try {
+      window.location.assign('/login');
+      // const { email, password } = formState;
+      // const { data } = await login({
+      //   variables: { email, password },
+      // });
+      // const token = data.login.token;
+      // Auth.login(token);
+      // history.push('/profile');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const handleLogin = () => {
-    history.push('/login');
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
-
-  const ref = useRef();
 
   return (
     <footer className="footer">
       <Container text textAlign="center">
-        <div className="footer-buttons" ref={ref}>
+        <div className="footer-buttons">
           <Button.Group widths="6" fluid>
             <Button as={Link} to="/" basic inverted>
-              <Icon name="home" />
               <FaHome />
             </Button>
             <Button as={Link} to="/profile" basic inverted>
-              <Icon name="user" />
               <FaUser />
             </Button>
-            <Button as={Link} to="/cart" basic inverted>
-              <Icon name="shopping cart" />
+            {/* <Button as={Link} to="/cart" basic inverted>
               <FaShoppingCart />
-            </Button>
+            </Button> */}
             <Button as={Link} to="/favorites" basic inverted>
-              <Icon name="heart" />
               <FaHeart />
             </Button>
-            {isLoggedIn ? (
-              <>
-                <Button as={Link} to="/orderHistory" basic inverted>
-                  <FaList />
-                </Button>
-                <Button basic inverted onClick={handleLogout}>
-                  Logout
-                </Button>
-              </>
+            {Auth.loggedIn() ? (
+              <Button basic inverted onClick={Auth.logout}>
+                Logout
+              </Button>
             ) : (
-              <Button basic inverted onClick={handleLogin}>
+              <>
+                {/* <Button as={Link} to="/list" basic inverted>
+                  <FaList />
+                </Button> */}
+                <Button basic inverted onClick={handleLogin}>
                   Login
                 </Button>
+              </>
             )}
           </Button.Group>
         </div>
-        <h4 id="footnote">Created by the Robo-art team.</h4>
+        <h4 id="footnote">Created by the Robo-art team.</h4>        
       </Container>
     </footer>
   );

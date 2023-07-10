@@ -1,68 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Header, Input, Button, Container } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import '../App.css';
+import Auth from '../utils/auth';
+import Footer from '../components/Footer';
+import { LOGIN } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
+const Login = () => {
+  const [formState, setFormState] = useState({ username: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN);
 
-  handleInputChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
 
-  handleFormSubmit = (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const { username, password } = this.state;
-    // Perform login logic here, e.g., send API request, validate credentials, etc.
-    // You can access the username and password entered by the user using `username` and `password` variables.
-    // You can also update the state or perform any necessary actions based on the login result.
-    this.props.onLogin(username);
+    try {
+      const mutationResponse = await login({
+        variables: { username: formState.username, password: formState.password },
+      });
+    const token = mutationResponse.data.login.token;
+    Auth.login(token);
+    // Redirect to the profile page
+    window.location.assign('/profile');
+  } catch (e) {
+    console.log(e);
+    }
   };
 
-  render() {
-    return (
-      <div className="login-page">
-        <div className="login-box">
-        <Container text>
-          <Header as="h1">Login</Header>
-          <form onSubmit={this.handleFormSubmit}>
-            <div className="form-field">
-              <label htmlFor="username">Username:</label>
-              <Input
-                type="text"
-                id="username"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <div className="form-field">
-              <label htmlFor="password">Password:</label>
-              <Input
-                type="password"
-                id="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChange}
-              />
-            </div>
-            <Button type="submit" className='login-btn'>Login</Button>
-          </form>
-          <div className="signup-link">
-            Don't have an account? <Link to="/signup">Sign up</Link>
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  return (
+    <div className="login-page">
+      <Container text>
+        <Header as="h1">Login</Header>
+        <form onSubmit={handleFormSubmit}>
+          <div className="form-field">
+            <label htmlFor="username">Username:</label>
+            <Input
+              type="text"
+              id="username"
+              name="username"
+              value={formState.username}
+              onChange={handleChange}
+            />
           </div>
-        </Container>
-      </div>
-      </div>
-    );
-  }
-}
+          <div className="form-field">
+            <label htmlFor="password">Password:</label>
+            <Input
+              type="password"
+              id="password"
+              name="password"
+              value={formState.password}
+              onChange={handleChange}
+            />
+          </div>
+          <Button type="submit" className="login-btn">
+            Login
+          </Button>
+        </form>
+        <div className="signup-link">
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </div>
+      </Container>
+      <Footer />
+    </div>
+  );
+};
 
 export default Login;
