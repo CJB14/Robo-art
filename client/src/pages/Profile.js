@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import Auth from '../utils/auth'
 import '../App.css';
 import Footer from '../components/Footer';
-import Auth from '../utils/auth';
 
 class Profile extends React.Component {
   constructor(props) {
