@@ -2,21 +2,16 @@ const { Schema, model } = require('mongoose');
 const dayjs = require('dayjs');
 
 const orderSchema = new Schema({
-  artwork: {
+  products: {
     type: Schema.Types.ObjectId,
-    ref: 'Artwork',
+    ref: 'Product',
     required: true,
   },
-  artist: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
-  buyer: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-    required: true,
-  },
+  // buyer: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User',
+  //   required: true,
+  // },
   purchaseDate: {
     type: String,
     default: () => dayjs().format(),
@@ -59,8 +54,8 @@ const orderSchema = new Schema({
   },
   orderStatus: {
     type: String,
-      enum: ['n/a', 'iniated', 'pending', 'shipped'],
-      default: 'n/a',
+      enum: ['na', 'iniated', 'pending', 'shipped'],
+      default: 'na',
   }
 },
 {

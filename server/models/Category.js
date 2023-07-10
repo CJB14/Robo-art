@@ -5,10 +5,10 @@
 //         type: String,
 //         required: true,
 //     },
-//     artworks: [
+//     products: [
 //         {
 //             type: Schema.Types.ObjectId,
-//             ref: 'Artwork',
+//             ref: 'Product',
 //         },
 //     ],
 // });
