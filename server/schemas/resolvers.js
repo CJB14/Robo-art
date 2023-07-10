@@ -1,5 +1,3 @@
-//to do: this is boiler plate, needs editing
-
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
@@ -93,13 +91,7 @@ const resolvers = {
         return { session: session.id };
       }
     },
-    Mutation: {
-      // Resolver functions for mutations
-      // addUser: async (parent, {username, email, password}) => {
-      //   const user = await User.create({username, email, password});
-      //   const token = signToken(user);
-  
-      //   return { token, user };
+    Mutation: {      
           // Resolver functions for mutations
     addUser: async (parent, { username, email, password }) => {
       const hashedPassword = await bcrypt.hash(password, 10);
