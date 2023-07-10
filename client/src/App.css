@@ -84,12 +84,24 @@ h1 {
   align-items: center;
   width: 100%;
   background-color: transparent;
-  
+  position: fixed;
+  bottom: 0;
 }
 
-.footer-buttons {
+.footer-button-group {
   display: flex;
-  justify-content: space-around;  
+  justify-content: center;
+}
+
+.footer-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.footer-icon {
+  margin-right: 15px;
 }
 
 #footnote {
@@ -106,5 +118,8 @@ h1 {
   /* Media query for screens wider than 768px (e.g., tablets, desktops) */
   .login-box {
     max-width: 400px; /* Adjust the maximum width for larger screens if needed */
+  }
+  .footer-button-group {
+    justify-content: space-between;
   }
 }

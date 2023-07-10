@@ -2,6 +2,7 @@ import React from 'react';
 import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import Footer from '../components/Footer';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -62,19 +63,22 @@ class Profile extends React.Component {
               </Grid.Row>
             </Grid>
           </Container>
+          <Footer />
         </div>
       );
     } else {
       return (
-        <div className='login-page'>
-          <div className='login-box'>
-            <Header as="h1">Please login to view your profile</Header>
-            <Login onLogin={this.handleLogin} />
-            <div className="signup-link">
-              Don't have an account? <Link to="/signup">Sign up</Link>
-            </div>
-          </div>
-        </div>
+        window.location.assign('/login')
+        // <div className='login-page'>
+        //   <div className='login-box'>
+        //     <Header as="h1">Please login to view your profile</Header>
+        //     <Login onLogin={this.handleLogin} />
+        //     <div className="signup-link">
+        //       Don't have an account? <Link to="/signup">Sign up</Link>
+        //     </div>
+        //   </div>
+        //   <Footer />
+        // </div>
       );
     }
   }
@@ -129,6 +133,7 @@ class Login extends React.Component {
         <Button type="submit" className='login-btn'>Login</Button>
       </form>
     );
+    <Footer />
   }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header, Input, Button, Image } from 'semantic-ui-react';
 import '../App.css';
+import Footer from '../components/Footer';
 
 
 class Home extends React.Component {
@@ -65,6 +66,7 @@ class Home extends React.Component {
               {/* Render images */}
             </div>
           )}
+          <Footer />
         </div>
       </div>
     );
