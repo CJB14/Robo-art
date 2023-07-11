@@ -5,6 +5,7 @@ import '../App.css';
 import Auth from '../utils/auth';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import Footer from '../components/Footer';
 
 function Signup(props) {
   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -32,10 +33,11 @@ function Signup(props) {
   };
 
   return (
-    <Container className="signup-page">
+    <div className="signup-page">
       <div className="signup-box">
-        <Link to="/login" className="go-back-link">← Go to Login</Link>
-        <Header as="h2" className="signup-header">Signup</Header>
+    <Container>
+        <Link to="/login" className="go-back-link">← Go Back</Link>
+        <Header as="h1" className="signup-header">Signup</Header>
         <form onSubmit={handleFormSubmit}>
           <div className="form-field">
             <label htmlFor="username" className="form-label">Username:</label>
@@ -70,10 +72,12 @@ function Signup(props) {
               onChange={handleChange}
             />
           </div>
-          <Button type="submit" className="submit-btn">Submit</Button>
+          <Button type="submit" className="login-btn">Submit</Button>
         </form>
-      </div>
     </Container>
+      </div>
+    <Footer />
+    </div>
   );
 }
 

@@ -67,6 +67,14 @@ h1 {
   background-color: #fff;
   max-width: 320px; /* Set the maximum width for mobile devices */
   width: 60%;
+  position: relative;
+}
+
+.go-back-link {
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }
 
 .login-btn {
@@ -78,6 +86,24 @@ h1 {
 
 .signup-link {
   margin-top: 50px;
+}
+
+.form-label {
+  text-align: left;
+  margin-left: 10px;
+}
+.social-text {
+  color: var(--orange);  
+}
+
+.search-btn {
+  background: lightslategray;
+  border-radius: 10px;
+  color: lawngreen;
+}
+
+.number {
+  color: #fff;
 }
 
 .footer {
@@ -101,13 +127,28 @@ h1 {
   justify-content: center;
   flex-grow: 1;
 }
-
+.footer .button {
+  color: #fff;
+}
 .footer-icon {
   margin-right: 15px;
 }
 
 #footnote {
   font-size: x-small;
+}
+
+.login-footer {
+  background-color: green;
+  border-radius: 15px;
+  color: #fff;
+
+}
+
+.logout-footer {
+  background-color: red;
+  border-radius: 15px;
+  color: #fff;
 }
 
 .pages-container {

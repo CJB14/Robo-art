@@ -42,7 +42,7 @@ const Login = () => {
         <Header as="h1">Login</Header>
         <form onSubmit={handleFormSubmit}>
           <div className="form-field">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username" className='params'>Username:</label>
             <Input
               type="text"
               id="username"
@@ -52,7 +52,7 @@ const Login = () => {
             />
           </div>
           <div className="form-field">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password" className='form-label'>Password:</label>
             <Input
               type="password"
               id="password"
@@ -61,7 +61,7 @@ const Login = () => {
               onChange={handleChange}
             />
           </div>
-          <Button type="submit" className="login-btn">
+          <Button type="submit" className="form-label">
             Login
           </Button>
         </form>
