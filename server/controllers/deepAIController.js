@@ -32,8 +32,7 @@ const text2img = async (req, res) => {
   
       await product.save();
 
-      // res.json({success: true, message: 'Image generated successfully.'});
-       res.json(product);
+      res.json({success: true, imageUrl: resp.output_url});
 
     } catch (error) {
       console.error('Error:', error);
