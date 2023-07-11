@@ -14,6 +14,7 @@ const ArtworkPage = () => {
     if (token) {
       // Decode the JWT token to get the user information
       const decodedToken = jwtDecode(token);
+      console.log(decodedToken);
 
       // Extract the userId from the decoded token
       const userId = decodedToken.userId;
@@ -24,7 +25,7 @@ const ArtworkPage = () => {
   return (
     <div>
       <h1>THIS IS WHERE YOU WILL GENERATE AN IMAGE</h1>
-      <Text2ImgComponent userId={userId} />
+      <Text2ImgComponent />
     </div>
   );
 };

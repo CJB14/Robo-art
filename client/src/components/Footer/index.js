@@ -26,7 +26,7 @@ const Footer = () => {
             </Button>
             ) : ( <></>)  }
             {Auth.loggedIn() ? (
-              <Button basic inverted onClick={Auth.logout}>
+              <Button basic inverted onClick={Auth.logout} className='logout-footer'>
                 Logout
               </Button>
             ) : (
@@ -34,7 +34,7 @@ const Footer = () => {
                 {/* <Button as={Link} to="/list" basic inverted>
                   <FaList />
                 </Button> */}
-                <Button basic inverted onClick={() => window.location.assign('/login')}>
+                <Button basic inverted onClick={() => window.location.assign('/login')} className='login-footer'>
                   Login
                 </Button>
               </>

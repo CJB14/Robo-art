@@ -19,7 +19,7 @@ const productSchema = new Schema({
     artist: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+        // required: true,
     },
     //TO DO: EDIT CATEGORY MODEL, TYPEDEFS, RESOLVERS, QUERIES
     // category: {

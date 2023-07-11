@@ -24,6 +24,7 @@ const Login = () => {
     window.location.assign('/profile');
   } catch (e) {
     console.log(e);
+    alert('Incorrect username or password!');
     }
   };
 
@@ -42,7 +43,7 @@ const Login = () => {
         <Header as="h1">Login</Header>
         <form onSubmit={handleFormSubmit}>
           <div className="form-field">
-            <label htmlFor="username">Username:</label>
+            <label htmlFor="username" className='params'>Username:</label>
             <Input
               type="text"
               id="username"
@@ -52,7 +53,7 @@ const Login = () => {
             />
           </div>
           <div className="form-field">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password" className='form-label'>Password:</label>
             <Input
               type="password"
               id="password"

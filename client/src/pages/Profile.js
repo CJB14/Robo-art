@@ -40,6 +40,7 @@ class Profile extends React.Component {
     const { username,  } = this.state;
 
     if (Auth.loggedIn()) {
+      
       return (
         <div className="profile-page">
           <Container text>
@@ -50,20 +51,20 @@ class Profile extends React.Component {
                   <div className="statistics-row">
                     <div className="statistic">
                       <Statistic>
-                        <Statistic.Value>100</Statistic.Value>
-                        <Statistic.Label>Followers</Statistic.Label>
+                        <Statistic.Value className='number'>100</Statistic.Value>
+                        <Statistic.Label className='social-text'>Followers</Statistic.Label>
                       </Statistic>
                     </div>
                     <div className="statistic">
                       <Statistic>
-                        <Statistic.Value>50</Statistic.Value>
-                        <Statistic.Label>Following</Statistic.Label>
+                        <Statistic.Value className='number'>50</Statistic.Value>
+                        <Statistic.Label className='social-text'>Following</Statistic.Label>
                       </Statistic>
                     </div>
                     <div className="statistic">
                       <Statistic>
-                        <Statistic.Value>500</Statistic.Value>
-                        <Statistic.Label>Likes</Statistic.Label>
+                        <Statistic.Value className='number'>500</Statistic.Value>
+                        <Statistic.Label className='social-text'>Likes</Statistic.Label>
                       </Statistic>
                     </div>
                   </div>
@@ -71,7 +72,7 @@ class Profile extends React.Component {
                 <Grid.Column width={6}>
                   <div className="search-container">
                     <Input icon="search" placeholder="Search..." fluid />
-                    <Button primary>Submit</Button>
+                    <Button primary className='search-btn'>Submit</Button>
                   </div>
                 </Grid.Column>
               </Grid.Row>
@@ -85,9 +86,6 @@ class Profile extends React.Component {
       // User is not logged in, redirect to login page
       window.location.href = '/login';
       return null; // or render a loading state or redirect component
-
-      return <Redirect to="/login" />;
-
     }
   }
 }
