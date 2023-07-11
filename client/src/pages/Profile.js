@@ -40,6 +40,7 @@ class Profile extends React.Component {
     const { username,  } = this.state;
 
     if (Auth.loggedIn()) {
+      
       return (
         <div className="profile-page">
           <Container text>

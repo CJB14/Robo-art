@@ -24,6 +24,7 @@ const Login = () => {
     window.location.assign('/profile');
   } catch (e) {
     console.log(e);
+    alert('Incorrect username or password!');
     }
   };
 
@@ -61,7 +62,7 @@ const Login = () => {
               onChange={handleChange}
             />
           </div>
-          <Button type="submit" className="form-label">
+          <Button type="submit" className="login-btn">
             Login
           </Button>
         </form>
