@@ -97,7 +97,7 @@ h1 {
 }
 
 .search-btn {
-  background: lightslategray;
+  background: rgba(119, 136, 153, 0.64);
   border-radius: 10px;
   color: lawngreen;
 }

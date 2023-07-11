@@ -21,6 +21,7 @@ function Signup(props) {
       Auth.login(token);
     } catch (err) {
       console.error(err);
+      alert('An account with that username or email already exists!');
     }
   };
 
