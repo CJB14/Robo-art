@@ -53,7 +53,7 @@ class Home extends React.Component {
             value={this.state.searchTerm}
             onChange={this.handleSearchChange}
           />
-          <Button primary onClick={this.handleSearchSubmit}>
+          <Button primary onClick={this.handleSearchSubmit} className='search-btn'>
             Search
           </Button>
         </div>
