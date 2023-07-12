@@ -5,7 +5,7 @@
     "main": "server.js",
     "scripts": {
         "start": "node server.js",
-        "seed":  "node seeders/seeders.js",
+        "seed": "node seeders/seeders.js",
         "watch": "nodemon server.js"
     },
     "keywords": [],
@@ -16,6 +16,7 @@
         "bcrypt": "^5.0.0",
         "dayjs": "^1.11.8",
         "deepai": "^1.0.21",
+        "dotenv": "^16.3.1",
         "express": "^4.17.1",
         "graphql": "^15.5.0",
         "jsonwebtoken": "^9.0.0",

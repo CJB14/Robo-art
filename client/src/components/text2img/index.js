@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
-const Text2ImgComponent = ({ userId }) => {
+//pass token as param
+const Text2ImgComponent = ({  }) => {
   const [text, setText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
@@ -16,14 +17,17 @@ const Text2ImgComponent = ({ userId }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ text, userId}),
+        body: JSON.stringify({ text, 
+        //userId
+        }),
       });
 
       const data = await response.json();
       if (data.success) {
+        console.log(data);
         setImageUrl(data.imageUrl);
+        console.log(data.imageUrl);
       } else {
-        console.error('Error:', data.message);
         setError(data.error || 'Something went wrong');
       }
     } catch (error) {
