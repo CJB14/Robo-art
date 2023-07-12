@@ -122,12 +122,16 @@ const resolvers = {
         const user = await User.findOne({ username });
   
         if (!user) {
+          console.log('user not found')
+          console.log('user', user);
           throw new AuthenticationError('Incorrect credentials');
         }
   
         const correctPw = await user.isCorrectPassword(password);
   
         if (!correctPw) {
+          console.log('incorrect password')
+          console.log('correctPw', correctPw);
           throw new AuthenticationError('Incorrect credentials');
         }
   

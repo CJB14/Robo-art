@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semantic-ui-react';
+import { Header, Container } from 'semantic-ui-react';
 import Text2ImgComponent from '../components/Text2Img';
 import jwtDecode from 'jwt-decode';
+import '../App.css';
+import Footer from '../components/Footer';
 
 const ArtworkPage = () => {
-
   const [userId, setUserId] = useState('');
 
   useEffect(() => {
@@ -17,14 +18,18 @@ const ArtworkPage = () => {
 
       // Extract the userId from the decoded token
       const userId = decodedToken.userId;
-      
+
       setUserId(userId);
     }
   }, []);
+
   return (
-    <div>
-      <h1>THIS IS WHERE YOU WILL GENERATE AN IMAGE</h1>
-      <Text2ImgComponent userId={userId} />
+    <div className="artwork-page">
+      <Container text>
+        <Header as="h1">Artwork</Header>        
+        <Text2ImgComponent userId={userId} />
+      </Container>
+      <Footer />
     </div>
   );
 };

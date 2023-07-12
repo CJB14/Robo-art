@@ -1,6 +1,7 @@
 import React from 'react';
 import { Header, Input, Button, Image } from 'semantic-ui-react';
 import '../App.css';
+import HeaderTop from '../components/Header';
 import Footer from '../components/Footer';
 
 class Home extends React.Component {
@@ -47,16 +48,7 @@ class Home extends React.Component {
     return (
       <div className="home-page">
         <Header as="h1">Robo-Art</Header>
-        <div className="search-container">
-          <Input
-            placeholder="Search images..."
-            value={this.state.searchTerm}
-            onChange={this.handleSearchChange}
-          />
-          <Button primary onClick={this.handleSearchSubmit} className='search-btn'>
-            Search
-          </Button>
-        </div>
+        <HeaderTop />
         <div className="image-container">
           {this.state.randomImages.length === 0 ? (
             <p>No images found.</p>
