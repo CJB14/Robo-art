@@ -51,7 +51,7 @@ function App() {
               <Route path="/logout" component={Logout} />
               <Route exact path="/profile" component={Profile} />
               <Route path="/orderHistory" component={OrderHistory} />
-              <Route path="/product/:id" component={Artwork} />
+              <Route path="/artwork" component={Artwork} />
               {/* <Route path="/products/:id" component={Detail} /> */}
               <Route exact path="/signup" component={Signup} />
               <Route exact path="/favorites" component={Favorites} />

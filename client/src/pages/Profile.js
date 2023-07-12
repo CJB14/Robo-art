@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import Auth from '../utils/auth'
 import '../App.css';
+import HeaderTop from '../components/Header';
 import Footer from '../components/Footer';
 
 class Profile extends React.Component {
@@ -69,12 +70,7 @@ class Profile extends React.Component {
                     </div>
                   </div>
                 </Grid.Column>
-                <Grid.Column width={6}>
-                  <div className="search-container">
-                    <Input icon="search" placeholder="Search..." fluid />
-                    <Button primary className='search-btn'>Submit</Button>
-                  </div>
-                </Grid.Column>
+                <HeaderTop />
               </Grid.Row>
             </Grid>
           </Container>
