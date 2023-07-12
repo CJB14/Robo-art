@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semantic-ui-react';
-import Text2ImgComponent from '../components/Text2Img';
+import Text2ImgComponent from '../components/text2img';
 import jwtDecode from 'jwt-decode';
 
 const ArtworkPage = () => {
