@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 
+<<<<<<< HEAD
 const Text2ImgComponent = ({ userId = '', webToken }) => {
+=======
+//pass token as param
+const Text2ImgComponent = ({  }) => {
+>>>>>>> 98f3121fabe189867627aaaa568e74b0447f719f
   const [text, setText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
@@ -17,14 +22,21 @@ const Text2ImgComponent = ({ userId = '', webToken }) => {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${webToken}`,
         },
+<<<<<<< HEAD
         body: JSON.stringify({ text, userId }),
+=======
+        body: JSON.stringify({ text, 
+        //userId
+        }),
+>>>>>>> 98f3121fabe189867627aaaa568e74b0447f719f
       });
 
       const data = await response.json();
       if (data.success) {
+        console.log(data);
         setImageUrl(data.imageUrl);
+        console.log(data.imageUrl);
       } else {
-        console.error('Error:', data.message);
         setError(data.error || 'Something went wrong');
       }
     } catch (error) {

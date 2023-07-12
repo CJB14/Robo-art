@@ -1,4 +1,4 @@
-//this is the actual endpoint
+/* //this is the actual endpoint
 // const liveEndpoint = 'https://api.peecho.com/api/printorder';
 
 const fetch = require('node-fetch');
@@ -90,7 +90,7 @@ const printOrder = async (req, res) => {
 
 module.exports = {
   printOrder,
-};
+}; */
   
 
 
