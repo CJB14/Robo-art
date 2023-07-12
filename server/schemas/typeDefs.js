@@ -66,6 +66,7 @@ const typeDefs = gql`
         updateProduct(_id: ID!, quantity: Int!): Product
         deleteUser: User
         deleteProduct(_id: ID!): Product
+        text2img (text: String!): Product
     }
 
     type Checkout {

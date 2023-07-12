@@ -9,11 +9,10 @@ deepai.setApiKey(apiKey);
 
 const text2img = async (req, res) => {
     try {
-      const { text, 
-        // token 
-      } = req.body;
+      const { text } = req.body;
+      const userId = req.user._id;
       
-      // Verify and decode the JWT token to extract the user ID
+    //   // Verify and decode the JWT token to extract the user ID
     // const decodedToken = jwt.verify(token, secret);
     // const userId = decodedToken.userId;
 
@@ -21,13 +20,13 @@ const text2img = async (req, res) => {
       const resp = await deepai.callStandardApi("stable-diffusion", { text });
   
       // Log the value of resp.output_url
-    console.log('Output URL:', resp.output_url);
+      console.log('Output URL:', resp.output_url);
 
       // Save the image response to the database
         const product = new Product({
         description: text,
         imageUrl: resp.output_url,
-        // artist: userId, 
+        artist: userId, 
       })
   
       await product.save();
