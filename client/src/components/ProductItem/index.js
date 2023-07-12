@@ -6,7 +6,7 @@ import { pluralize } from "../../utils/helpers"
 import { useStoreContext } from "../../utils/GlobalState";
 
 //ALSO WANT TO CREATE NEW ORDER MODEL
-import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
+// import { ADD_TO_CART, UPDATE_CART_QUANTITY } from "../../utils/actions";
 
 //TO DO : EDIT BC WE ARE USING MONGOOSE
 import { idbPromise } from "../../utils/helpers";

@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
-import CartItem from '../CartItem';
+// import CartItem from '../CartItem';
 import { QUERY_CHECKOUT } from '../../utils/queries';
 import Auth from '../../utils/auth';
-import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions';
+/* import { TOGGLE_CART, ADD_MULTIPLE_TO_CART } from '../../utils/actions'; */
 // import './style.css';
 
 //TO DO: EDIT BECAUSE WE ARE USING MONGOOSE NOT IDB
@@ -91,7 +91,7 @@ const Cart = () => {
             <strong>Total: ${calculateTotal()}</strong>
 
             {Auth.loggedIn() ? (
-              <button onClick={submitCheckout}>Checkout</button>
+              <button onClick={submitCheckout}>Donate!</button>
             ) : (
               <span>(log in to check out)</span>
             )}
