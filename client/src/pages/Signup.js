@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 
 function Signup(props) {
   const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+  
   const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
@@ -17,6 +18,7 @@ function Signup(props) {
       const { data } = await addUser({
         variables: formState,
       });
+      console.log(formState);
       const token = data.addUser.token;
       Auth.login(token);
     } catch (err) {
