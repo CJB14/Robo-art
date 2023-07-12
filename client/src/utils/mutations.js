@@ -70,5 +70,15 @@ export const ADD_USER = gql`
   }
 `;
 
+export const TEXT_2_IMG = gql`
+  mutation text2img(
+    $text: String!
+  ) {
+    text2img(
+      text: $text
+    ) {
+      imageURL
+    }
+  }`
 
 export { StoreProvider, useStoreContext };

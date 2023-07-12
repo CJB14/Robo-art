@@ -3,6 +3,7 @@ const { User, Product, Order } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 const bcrypt = require('bcrypt');
+const deepai = require('deepai');
 
 const resolvers = {
     Query: {
@@ -134,7 +135,31 @@ const resolvers = {
         const token = signToken(user);
   
         return { token, user };
-      }
+      },
+      text2img: async (parent, { text }, context) => {
+
+        if(context.user) {
+          const userId = context.user._id;
+      
+            // Call 'deepai' API with the provided text
+            const resp = await deepai.callStandardApi("stable-diffusion", { text });
+        
+            // Log the value of resp.output_url
+            console.log('Output URL:', resp.output_url);
+      
+            // Save the image response to the database
+              const product = new Product({
+              description: text,
+              imageURL: resp.output_url,
+              artist: userId, 
+            })
+
+            await product.save();
+            return product;
+        } else {
+          throw new AuthenticationError('You need to be logged in!');
+        }
+      },
     }
   };
   
