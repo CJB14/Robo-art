@@ -1,7 +1,7 @@
 import React from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { Button, Container, Input } from 'semantic-ui-react';
-import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList, FaPalette } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { Button, Container } from 'semantic-ui-react';
+import { FaHome, FaUser, FaHeart, FaPalette, FaPaypal } from 'react-icons/fa';
 import Auth from '../../utils/auth';
 
 const Footer = () => {
@@ -57,7 +57,11 @@ const Footer = () => {
           </Button.Group>
         </div>
         <div className="footer-footnote">
-          <h4 id="footnote">Created by the Robo-art team.</h4>
+          <h4 id="footnote">Created by the Robo-art team.
+          <Button as={Link} to="/favorites" basic inverted className="inline">
+                <FaPaypal size={15}/>
+              </Button>
+              </h4>
         </div>        
       </Container>
     </footer>

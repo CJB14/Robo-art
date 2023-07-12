@@ -1,10 +1,7 @@
 import React from 'react';
 import { Header, Image, Container, Grid, Statistic, Input, Button } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import Auth from '../utils/auth'
 import '../App.css';
-import HeaderTop from '../components/Header';
 import Footer from '../components/Footer';
 
 class Profile extends React.Component {
@@ -69,8 +66,7 @@ class Profile extends React.Component {
                       </Statistic>
                     </div>
                   </div>
-                </Grid.Column>
-                <HeaderTop />
+                </Grid.Column>                
               </Grid.Row>
             </Grid>
           </Container>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Text2ImgComponent = ({ userId }) => {
+const Text2ImgComponent = ({ userId = '', webToken }) => {
   const [text, setText] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [error, setError] = useState('');
@@ -15,8 +15,9 @@ const Text2ImgComponent = ({ userId }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${webToken}`,
         },
-        body: JSON.stringify({ text, userId}),
+        body: JSON.stringify({ text, userId }),
       });
 
       const data = await response.json();
@@ -33,14 +34,16 @@ const Text2ImgComponent = ({ userId }) => {
   };
 
   return (
-    <div>
-       {imageUrl ? (
+    <div className="text2img-container">
+      {imageUrl ? (
         <img src={imageUrl} alt="Generated Image" />
       ) : (
         <>
-          <textarea value={text} onChange={handleTextChange} />
+          <textarea value={text} onChange={handleTextChange} className="text-input" />
 
-          <button onClick={generateImg}>Generate Image</button>
+          <button onClick={generateImg} className="search-btn">
+            Generate
+          </button>
         </>
       )}
 
