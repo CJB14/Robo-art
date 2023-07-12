@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import { Button, Container, Input } from 'semantic-ui-react';
-import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList, FaPalette } from 'react-icons/fa';
+import { FaHome, FaUser, FaShoppingCart, FaHeart, FaList, FaPalette, FaPaypal } from 'react-icons/fa';
 import Auth from '../../utils/auth';
 
 const Footer = () => {
@@ -31,13 +31,13 @@ const Footer = () => {
               <></>
             )}
 
-            {Auth.loggedIn() ? (
+            {/* {Auth.loggedIn() ? (
               <Button as={Link} to="/favorites" basic inverted>
                 <FaHeart size={30}/>
               </Button>
             ) : (
               <></>
-            )}
+            )} */}
             
             {Auth.loggedIn() ? (
               <Button basic inverted onClick={Auth.logout} className='logout-footer'>
@@ -57,8 +57,12 @@ const Footer = () => {
           </Button.Group>
         </div>
         <div className="footer-footnote">
-          <h4 id="footnote">Created by the Robo-art team.</h4>
-        </div>        
+          <h4 id="footnote">Created by the Robo-art team.
+          <Button as={Link} to="/favorites" basic inverted className="inline">
+                <FaPaypal size={15}/>
+              </Button>
+              </h4>
+        </div>             
       </Container>
     </footer>
   );

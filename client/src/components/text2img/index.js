@@ -28,14 +28,14 @@ const Text2ImgComponent = ({  }) => {
   };
 
   return (
-    <div>
+    <div className="text2img-container">
        {imageUrl ? (
         <img src={imageUrl} alt="Generated Image" />
       ) : (
         <>
-          <textarea value={text} onChange={handleTextChange} />
+          <textarea value={text} onChange={handleTextChange} className="text-input" />
 
-          <button onClick={generateImg}>Generate Image</button>
+          <button onClick={generateImg} className="search-btn">Generate Image</button>
         </>
       )}
 
