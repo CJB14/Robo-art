@@ -58,7 +58,7 @@ const Footer = () => {
         </div>
         <div className="footer-footnote">
           <h4 id="footnote">Created by the Robo-art team.
-          <Button as={Link} to="/favorites" basic inverted className="inline">
+          <Button as={Link} to="/" basic inverted className="inline">
                 <FaPaypal size={15}/>
               </Button>
               </h4>
