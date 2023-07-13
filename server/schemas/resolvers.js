@@ -11,38 +11,27 @@ const resolvers = {
         products: async () => {
           return await Product.find();
         },
-      // products: async (parent, { category, name }) => {
-      //   const params = {};
-  
-      //   if (category) {
-      //     params.category = category;
-      //   }
-  
-      //   if (name) {
-      //     params.name = {
-      //       $regex: name
-      //     };
-      //   }
-  
-      //   return await Product.find(params).populate('category');
-      // },
-      // product: async (parent, { _id }) => {
-      //   return await Product.findById(_id).populate('category');
-      // },
-      user: async (parent, args, context) => {
-        if (context.user) {
-          const user = await User.findById(context.user._id).populate({
-            path: 'orders.products',
-            populate: 'category'
-          });
-  
-          user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-  
-          return user;
-        }
-  
-        throw new AuthenticationError('Not logged in');
-      },
+        userProducts: async (parent, args, context) => {
+          if (context.user) {
+            const userId = context.user._id;
+            const userProducts = await Product.find({ artist: userId });
+            console.log(userProducts);
+            return userProducts;
+          }
+          throw new AuthenticationError('User not authenticated.');
+        },
+        user: async (parent, args, context) => {
+          if (context.user) {
+
+            const userId = context.user._id;
+            console.log(userId);
+
+            const user = await User.findById(userId);
+            return user;
+          }
+        
+          throw new AuthenticationError('Not logged in');
+        },
       order: async (parent, { _id }, context) => {
         if (context.user) {
           const user = await User.findById(context.user._id).populate({

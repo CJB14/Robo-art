@@ -6,7 +6,6 @@ const typeDefs = gql`
         _id: ID!
         username: String!
         email: String!
-        password: String!
         orders: [Order] 
         products: [Product]
         # favorites: [Product]
@@ -40,7 +39,6 @@ const typeDefs = gql`
        imageURL: String!
        description: String
        artist: User
-       hashedPassword: String!
     }
 
     type Auth {
@@ -56,6 +54,7 @@ const typeDefs = gql`
         product(_id: ID!): Product
         order(_id: ID!): Order
         checkout(products: [ID]!): Checkout
+        userProducts: [Product]
     }
 
     type Mutation {
