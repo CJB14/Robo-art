@@ -18,25 +18,20 @@ const Home = () => {
   }
 
   const { products } = data;
-  console.log(products);
 
-  const randomImages = products.map((product) => product.imageURL).slice(0, 4);
-
-  return (
-    <div className="home-page">
-      <Header as="h1">Robo-Art</Header>
-      <Segment className="image-container" style={{ maxHeight: '400px', overflowY: 'auto' }}>
-        <div className="image-grid">
-          {randomImages.map((image, index) => (
-            <div key={index} className="image-item">
-              <Image src={image} size="small" />
-            </div>
-          ))}
+return (
+  <div className="home-page">
+    <Header as="h1">Robo-Art</Header>
+    <Container className="image-container">
+      {products.map((product) => (
+        <div key={product._id}>
+          <Image style={{ height: '400px', margin: '25px' }} src={product.imageURL} alt="Product" />
         </div>
-      </Segment>
-      <Footer />
-    </div>
-  );
+      ))}
+    </Container>
+    <Footer />
+  </div>
+);
 };
 
 export default Home;
