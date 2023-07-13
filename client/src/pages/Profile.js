@@ -62,7 +62,8 @@ const Profile = () => {
               <div className="image-grid">
                 {userProducts.map((product) => (
                   <div key={product._id} className="image-item">
-                    <Image src={product.imageURL} size="small" alt="Product" />
+                    <Image src={product.imageURL} size="small" style={{ margin: '25px', opacity: 0.85, 
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'}} alt="Product" />
                   </div>
                 ))}
                </div>
