@@ -7,8 +7,8 @@ const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 const routes = require('./routes');
 
-
 const PORT = process.env.PORT || 3001;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/mydatabase'; // Use environment variable or fallback to a default URL
 const app = express();
 const server = new ApolloServer({
   typeDefs,
@@ -35,11 +35,11 @@ const startServer = async () => {
     await server.start();
     server.applyMiddleware({ app });
 
-    await db.once('open', () => {
-      app.listen(PORT, () => {
-        console.log(`API server running on port ${PORT}!`);
-        console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
-      });
+    await db.openUri(MONGODB_URI); // Connect to MongoDB using the configured URL
+
+    app.listen(PORT, () => {
+      console.log(`API server running on port ${PORT}!`);
+      console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
     });
   } catch (error) {
     console.error('Error starting server:', error);
