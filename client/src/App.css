@@ -120,6 +120,27 @@ h1 {
   color: #fff;
 }
 
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.image-item {
+  display: flex;
+  justify-content: center;
+}
+
+.image-item img {
+  width: 180px;
+  height: 180px;
+}
+
 .footer {
   display: flex;
   justify-content: center;
