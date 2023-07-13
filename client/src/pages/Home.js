@@ -18,6 +18,7 @@ const Home = () => {
   }
 
   const { products } = data;
+  console.log(products);
 
   const randomImages = products.map((product) => product.imageURL).slice(0, 4);
 
