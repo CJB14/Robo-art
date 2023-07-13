@@ -39,7 +39,7 @@ const typeDefs = gql`
        title: String
        imageURL: String!
        description: String
-       artist: User!
+       artist: User
        hashedPassword: String!
     }
 

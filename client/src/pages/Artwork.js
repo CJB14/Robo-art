@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Header, Container } from 'semantic-ui-react';
-import Text2ImgComponent from '../components/text2img';
+import Text2ImgComponent from '../components/Text2Img';
 import jwtDecode from 'jwt-decode';
 import '../App.css';
 import Footer from '../components/Footer';

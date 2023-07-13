@@ -13,17 +13,13 @@ export const QUERY_CHECKOUT = gql`
   }
 `;
 
-export const QUERY_ALL_PRODUCTS = gql`
-  {
+export const GET_PRODUCTS = gql`
+   query GetProducts {
     products {
       _id
-      name
+      title
       description
-      price
-      quantity
-      category {
-        name
-      }
+      imageURL
     }
   }
 `;

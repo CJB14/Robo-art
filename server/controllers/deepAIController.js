@@ -25,13 +25,13 @@ const text2img = async (req, res) => {
       // Save the image response to the database
         const product = new Product({
         description: text,
-        imageUrl: resp.output_url,
+        imageURL: resp.output_url,
         artist: userId, 
       })
   
       await product.save();
 
-      res.json({success: true, imageUrl: resp.output_url});
+      res.json({success: true, imageURL: resp.output_url});
 
     } catch (error) {
       console.error('Error:', error);
