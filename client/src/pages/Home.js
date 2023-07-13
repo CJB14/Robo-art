@@ -25,7 +25,8 @@ return (
     <Container className="image-container">
       {products.map((product) => (
         <div key={product._id}>
-          <Image style={{ height: '400px', margin: '25px' }} src={product.imageURL} alt="Product" />
+          <Image style={{ height: '400px', margin: '25px', opacity: 0.85, 
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)'}} src={product.imageURL} alt="Product" />
         </div>
       ))}
     </Container>
