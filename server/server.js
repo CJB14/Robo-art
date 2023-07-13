@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config({path: __dirname + '/../.env'});
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
@@ -30,7 +30,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-const startServer = async () => {
+const startServer = async (typeDefs, resolvers) => {
   try {
     await server.start();
     server.applyMiddleware({ app });
@@ -46,4 +46,5 @@ const startServer = async () => {
   }
 };
 
-startServer();
+startServer(typeDefs, resolvers);
+

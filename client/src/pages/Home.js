@@ -18,7 +18,6 @@ const Home = () => {
   }
 
   const { products } = data;
-  console.log(products)
 
 return (
   <div className="home-page">
