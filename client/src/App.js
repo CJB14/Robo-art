@@ -20,6 +20,7 @@ import Signup from './pages/Signup';
 import Favorites from './pages/Favorites';
 // import ProtectedRoute from './components/ProtectedRoute';
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });

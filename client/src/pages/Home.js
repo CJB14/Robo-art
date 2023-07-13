@@ -1,65 +1,43 @@
-import React from 'react';
-import { Header, Input, Button, Image } from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { Header, Image } from 'semantic-ui-react';
 import '../App.css';
 import Footer from '../components/Footer';
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchTerm: '',
-      randomImages: []
+const Home = () => {
+  const [randomImages, setRandomImages] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch(''); // Replace with the actual API endpoint
+        const data = await response.json();
+        const images = data.products.map((product) => product.imageUrl);
+        setRandomImages(images);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
     };
-  }
 
-  handleSearchChange = (e) => {
-    this.setState({ searchTerm: e.target.value });
-  };
+    fetchProducts();
+  }, []);
 
-  handleSearchSubmit = () => {
-    // Perform search logic using the searchTerm
-    // and update the randomImages state with the results
-    const { searchTerm } = this.state;
-    const apiKey = process.env.DEEPART_API_KEY;
-    fetch('https://api.deepai.org/api/text2img', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'api-key': apiKey
-      },
-      body: JSON.stringify({
-        text: searchTerm,
-        num_images: 6
-      })
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Update the randomImages state with the fetched images
-        this.setState({ randomImages: data.images });
-      })
-      .catch((error) => {
-        console.error('Error fetching images:', error);
-        // Handle any error that occurred during the image fetch
-      });
-  };
-
-  render() {
-    return (
-      <div className="home-page">
-        <Header as="h1">Robo-Art</Header>        
-        <div className="image-container">
-          {this.state.randomImages.length === 0 ? (
-            <p>No images found.</p>
-          ) : (
-            <div>
-              {/* Render images */}
-            </div>
-          )}
-          <Footer />
-        </div>
+  return (
+    <div className="home-page">
+      <Header as="h1">Robo-Art</Header>
+      <div className="image-container">
+        {randomImages.length === 0 ? (
+          <p>No images found.</p>
+        ) : (
+          <div>
+            {randomImages.map((image, index) => (
+              <Image key={index} src={image} />
+            ))}
+          </div>
+        )}
       </div>
-    );
-  }
-}
+      <Footer />
+    </div>
+  );
+};
 
 export default Home;
